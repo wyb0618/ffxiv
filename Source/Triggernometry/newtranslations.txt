@@ -1,0 +1,35 @@
+﻿RepositoryForm/lblAudioOverride
+Audio output setting override
+
+RepositoryForm/cbxAudioOverride[As defined in repository]
+As defined in repository
+
+RepositoryForm/cbxAudioOverride[Audio override setting always on]
+Audio override setting always on
+
+RepositoryForm/cbxAudioOverride[Audio override setting always off]
+Audio override setting always off
+
+ConfigurationForm/cbxTestLive
+Set testing with live values as the default action test method
+
+ConfigurationForm/cbxTestLive
+Enable aura hardware acceleration
+
+ConfigurationForm/lblMonitorWindow
+Monitor window for showing/hiding aura
+
+ConfigurationForm/grpUserInterface
+ User interface 
+
+ActionForm/lblReadOnly
+You are in read-only mode, as the configuration of remote triggers can't be edited locally. If you wish to edit the action, you will need to make a local copy of the trigger.
+
+internal/Context/lastindexofargerror
+Lastindexof function requires one argument, {0} were given
+
+Plugin/UserInterface/ctxCollapseAll
+Collapse all
+
+Plugin/UserInterface/ctxExpand
+Expand all

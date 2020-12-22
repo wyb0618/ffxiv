@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLMHelper.cs" />
+    <Compile Include="Class1.cs" />
     <Compile Include="Common\BLMForm.cs">
       <SubType>UserControl</SubType>
     </Compile>

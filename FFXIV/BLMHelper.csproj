@@ -7,8 +7,8 @@
     <ProjectGuid>{9B1CECAF-DCE5-45B7-BC11-A8FAE9EB2187}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ClassLibrary1</RootNamespace>
-    <AssemblyName>ClassLibrary1</AssemblyName>
+    <RootNamespace>FFXIV</RootNamespace>
+    <AssemblyName>FFXIV</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -67,24 +67,38 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLMHelper.cs">
+    <Compile Include="BLMHelper.cs" />
+    <Compile Include="Common\BLMForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Common\BLMListener.cs" />
-    <Compile Include="Models\Player.cs" />
+    <Compile Include="Common\MPTimer.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="BLMHelper.resx">
       <DependentUpon>BLMHelper.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Common\BLMForm.resx">
+      <DependentUpon>BLMForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Common\MPTimer.resx">
+      <DependentUpon>MPTimer.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

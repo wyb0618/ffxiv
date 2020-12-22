@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Advanced_Combat_Tracker;
-using FFXIV.Common;
+using FFXIV_WYB;
 
 namespace FFXIV_WYB
 {
@@ -16,7 +16,6 @@ namespace FFXIV_WYB
         
         public BLMHelper()
         {
-            BlmForm = new BLMForm();
         }
 
         public void DeInitPlugin()
@@ -26,10 +25,12 @@ namespace FFXIV_WYB
 
         void IActPluginV1.InitPlugin(TabPage pluginScreenSpace, Label pluginStatusText)
         {
+            BlmForm = new BLMForm();
             pluginScreenSpace.Text = "黑魔助手";
             pluginScreenSpace.Controls.Add(BlmForm);
 
             _ffxiv_Plugin = GetFfxivPlugin();
+            BLMListener bLMListener = new BLMListener(_ffxiv_Plugin, BlmForm);
 
             pluginStatusText.Text = "黑魔助手启动";
         }

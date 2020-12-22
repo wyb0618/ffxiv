@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Advanced_Combat_Tracker;
-using FFXIV.Common;
 
 namespace FFXIV_WYB
 {
@@ -14,6 +13,7 @@ namespace FFXIV_WYB
         private GroupBox groupBox1;
         private CheckBox checkBox2;
         private CheckBox checkBox1;
+        private TextBox textBox1;
 
         #region Designer Created Code (Avoid editing)
         /// <summary> 
@@ -45,6 +45,7 @@ namespace FFXIV_WYB
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,10 +81,21 @@ namespace FFXIV_WYB
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(44, 132);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(831, 282);
+            this.textBox1.TabIndex = 2;
+            this.textBox1.Text = "测试消息：";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // BLMForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "BLMForm";
@@ -91,6 +103,7 @@ namespace FFXIV_WYB
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -105,6 +118,16 @@ namespace FFXIV_WYB
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             new MPTimer().CreateForm();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        public void printMsg(String msg)
+        {
+            textBox1.Text = textBox1.Text + "\n" + msg;
         }
     }
 }

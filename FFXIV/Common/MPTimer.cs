@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 
-namespace FFXIV.Common
+namespace FFXIV_WYB
 {
     class MPTimer:Form
     {

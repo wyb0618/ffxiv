@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FFXIV_ACT_Plugin;
+using SharpDX.Direct2D1;
 
-namespace FFXIV
+namespace FFXIV.Common
 {
-    class Starter
+    class Class1
     {
-        public static void Main(string[] args) {
-
-            Console.WriteLine();
+        public void d2d()
+        {
+            Direct2D1 
         }
     }
 }

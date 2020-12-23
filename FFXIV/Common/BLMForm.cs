@@ -129,7 +129,6 @@ namespace FFXIV_WYB
         
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            new MPTimer().CreateForm();
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)

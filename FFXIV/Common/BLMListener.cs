@@ -30,8 +30,7 @@ namespace FFXIV_WYB
         }
 
         public void ParsedLogLineDelegateHandler(uint sequence,int messagetype,String message) {
-
-
+            
             bLMForm.printOut("sequence:" + sequence.ToString() + "," + "messagetype:" + messagetype.ToString() + "," + "message:" + message);
             if (messagetype == 39) {
                 bLMForm.printMsg("sequence:"+sequence.ToString()+","+ "messagetype:"+ messagetype.ToString()+","+ "message:"+ message);

@@ -19,6 +19,8 @@ namespace FFXIV_WYB
         private BLMForm bLMForm;
         private Player player;
         private FFXIV_ACT_Plugin.FFXIV_ACT_Plugin _ffxiv_Plugin;
+        private static MPTimer mPTimer;
+
         public BLMListener(FFXIV_ACT_Plugin.FFXIV_ACT_Plugin _ffxiv_Plugin,BLMForm bLMForm)
         {
             this._ffxiv_Plugin = _ffxiv_Plugin;
@@ -26,18 +28,19 @@ namespace FFXIV_WYB
             player = _ffxiv_Plugin.DataRepository.GetPlayer();
 
             _ffxiv_Plugin.DataSubscription.ParsedLogLine += new ParsedLogLineDelegate(ParsedLogLineDelegateHandler);
-    
         }
 
         public void ParsedLogLineDelegateHandler(uint sequence,int messagetype,String message) {
-            
-            bLMForm.printOut("sequence:" + sequence.ToString() + "," + "messagetype:" + messagetype.ToString() + "," + "message:" + message);
-            if (messagetype == 39) {
-                bLMForm.printMsg("sequence:"+sequence.ToString()+","+ "messagetype:"+ messagetype.ToString()+","+ "message:"+ message);
-                bLMForm.printMsg(Environment.NewLine);
-            }
+            if (messagetype == 39 && message!=null)
+            {
+                if (mPTimer == null){
+                    mPTimer = MPTimer.GetTimer();
+                }
+                else{
+                    MPTimer.
+                }
 
-           
+            }
         }
    
     }

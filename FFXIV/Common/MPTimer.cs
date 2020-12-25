@@ -34,11 +34,17 @@ namespace FFXIV_WYB
             // 
             // MPTimer
             // 
-            this.ClientSize = new System.Drawing.Size(130, 13);
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.SystemColors.WindowText;
+            this.ClientSize = new System.Drawing.Size(130, 5);
             this.Controls.Add(this.progressBar1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Location = new System.Drawing.Point(100, 100);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "MPTimer";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.TopMost = true;
             this.ResumeLayout(false);
 
@@ -57,7 +63,7 @@ namespace FFXIV_WYB
             GetTimer().Show();
         }
 
-        private void darwingTimer()
+        private void ResetTimer()
         {
 
         }

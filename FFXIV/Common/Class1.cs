@@ -11,7 +11,7 @@ namespace FFXIV.Common
     {
         public void d2d()
         {
-            Direct2D1 
+            
         }
     }
 }

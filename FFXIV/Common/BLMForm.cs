@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Advanced_Combat_Tracker;
 
-namespace FFXIV_WYB
+namespace BLMHelper
 {
     public class BLMForm : UserControl
     {
@@ -112,6 +112,7 @@ namespace FFXIV_WYB
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "BLMForm";
             this.Size = new System.Drawing.Size(915, 443);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BLMForm_MouseMove);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -144,6 +145,11 @@ namespace FFXIV_WYB
         public void printOut(String msg)
         {
             textBox2.Text = textBox2.Text + msg;
+        }
+
+        private void BLMForm_MouseMove(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }

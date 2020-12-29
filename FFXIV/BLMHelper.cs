@@ -5,9 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Advanced_Combat_Tracker;
-using FFXIV_WYB;
 
-namespace FFXIV_WYB
+namespace BLMHelper
 {
     public class BLMHelper : IActPluginV1
     {

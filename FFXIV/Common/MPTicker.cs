@@ -26,22 +26,8 @@ namespace BLMHelper
         private void InitializeComponent()
         {
             this.rcp = new RoundCorneredProgressBar.RoundCorneredProgressBar();
-            ((System.ComponentModel.ISupportInitialize)(this.rcp)).BeginInit();
             this.SuspendLayout();
-            // 
-            // rcp
-            // 
-            this.rcp.BackColor = System.Drawing.SystemColors.ButtonShadow;
-            this.rcp.Location = new System.Drawing.Point(1, 1);
-            this.rcp.Name = "rcp";
-            this.rcp.ProgressBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.rcp.ProgressBarColor = System.Drawing.Color.OrangeRed;
-            this.rcp.ProgressFont = new System.Drawing.Font("宋体", 35F, System.Drawing.FontStyle.Bold);
-            this.rcp.ProgressFontColor = System.Drawing.Color.Black;
-            this.rcp.Size = new System.Drawing.Size(150, 15);
-            this.rcp.TabIndex = 2;
-            this.rcp.TabStop = false;
-            this.rcp.Value = 300;
+
             // 
             // MPTicker
             // 
@@ -58,7 +44,6 @@ namespace BLMHelper
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.Red;
-            ((System.ComponentModel.ISupportInitialize)(this.rcp)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -67,12 +52,9 @@ namespace BLMHelper
         {
             if (mpTicker == null)
             {
-                return (mpTicker = new MPTicker());
+                mpTicker = new MPTicker();
             }
-            else
-            {
-                return mpTicker;
-            }
+            return mpTicker;
         }
 
         public void SetLocation(String x, String y)
@@ -94,7 +76,7 @@ namespace BLMHelper
         /// </summary>
         public void ShowTicker()
         {
-            this.Show();
+            Show();
         }
 
         /// <summary>
@@ -102,7 +84,7 @@ namespace BLMHelper
         /// </summary>
         public void HideTicker()
         {
-            this.Hide();
+            Hide();
         }
 
         /// <summary>
@@ -121,7 +103,7 @@ namespace BLMHelper
         /// </summary>
         public void Start()
         {
-            this.rcp.Start();
+            rcp.Start();
         }
 
         /// <summary>
@@ -129,7 +111,7 @@ namespace BLMHelper
         /// </summary>
         public void Stop()
         { 
-            this.rcp.Stop();
+            rcp.Stop();
         }
 
         /// <summary>
@@ -137,7 +119,7 @@ namespace BLMHelper
         /// </summary>
         public bool TickerEnable()
         {
-            return this.rcp.TickerEnable();
+            return rcp.TickerEnable();
         }
     }
 }

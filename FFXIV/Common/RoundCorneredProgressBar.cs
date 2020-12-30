@@ -18,7 +18,6 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RoundCorneredProgressBar
@@ -36,11 +35,30 @@ namespace RoundCorneredProgressBar
         public RoundCorneredProgressBar()
         {
             DoubleBuffered = true;
-            ProgressBarColor = Color.FromArgb(224, 224, 224);
-            ProgressBackColor = Color.FromArgb(255, 128, 255);
-            ProgressFont = new Font(Font.FontFamily, (int)(this.Height * 0.7), FontStyle.Bold);
-            ProgressFontColor = Color.Black;
+            // 
+            // rcp 初始化
+            // 
+            BackColor = System.Drawing.SystemColors.ButtonShadow;
+            Location = new System.Drawing.Point(1, 1);
+            Name = "rcp";
+            ProgressBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            ProgressBarColor = System.Drawing.Color.OrangeRed;
+            ProgressFont = new System.Drawing.Font("宋体", 35F, System.Drawing.FontStyle.Bold);
+            ProgressFontColor = System.Drawing.Color.Black;
+            Size = new System.Drawing.Size(150, 15);
+            TabIndex = 2;
+            TabStop = false;
             Value = 300;
+
+            pbWIDTH = this.Width;
+            pbHEIGHT = this.Height;
+
+            pbUnit = pbWIDTH / 300.0;
+
+            //% [min = 0 max = 300]
+            pbComplete = 0;
+
+            bmp = new Bitmap(pbWIDTH, pbHEIGHT);
         }
 
         public int Value { get; set; }
@@ -84,26 +102,6 @@ namespace RoundCorneredProgressBar
             this.RecreateRegion();
         }
 
-        /// <summary>
-        /// 初始化计时条 
-        /// </summary>
-        public void Animate()
-        {
-            pbWIDTH = this.Width;
-            pbHEIGHT = this.Height;
-
-            pbUnit = pbWIDTH / 300.0;
-
-            //% [min = 0 max = 300]
-            pbComplete = 0;
-
-            bmp = new Bitmap(pbWIDTH, pbHEIGHT);
-
-            //timer
-            this.t.Interval = 10;    
-            this.t.Tick += new EventHandler(this.t_Tick);
-        }
-
         private void t_Tick(object sender, EventArgs e)
         {
             //graphics
@@ -142,9 +140,9 @@ namespace RoundCorneredProgressBar
         /// </summary>
         public void SyncMP()
         {
-            this.t.Stop();
+            Stop();
             pbComplete = 0;
-            this.t.Start();
+            Start();
         }
 
         /// <summary>
@@ -152,8 +150,14 @@ namespace RoundCorneredProgressBar
         /// </summary>
         public void Start()
         {
+            t.Dispose();
+            
             pbComplete = 0;
-            this.t.Start();
+            //new timer
+            t = new Timer();
+            t.Interval = 10;
+            t.Tick += new EventHandler(this.t_Tick);
+            t.Start();
         }
 
 
@@ -163,7 +167,7 @@ namespace RoundCorneredProgressBar
         public void Stop()
         {
             pbComplete = 0;
-            this.t.Stop();
+            t.Dispose();
         }
 
         /// <summary>

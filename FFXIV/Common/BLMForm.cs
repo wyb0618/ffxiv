@@ -181,9 +181,25 @@ namespace BLMHelper
         private void mpTicker_check_CheckedChanged(object sender, EventArgs e)
         {
             if (mpTicker_check.Checked)
+            {
                 MPTicker.GetMpTicker().ShowTicker();
+                this.add_msg2(MPTicker.GetMpTicker().Handle.ToString());
+            }
             else
+            {
                 MPTicker.GetMpTicker().HideTicker();
+
+            }
         }
+
+        public void add_msg(String str)
+        {
+            this.act_msg.Text += str; 
+        }
+        public void add_msg2(String str)
+        {
+            this.output_msg.Text += str;
+        }
+
     }
 }

@@ -12,14 +12,18 @@ namespace BLMHelper
     {
         private FFXIV_ACT_Plugin.FFXIV_ACT_Plugin _ffxiv_Plugin = null;
         private BLMForm BlmForm = null;
-        
+        private BLMListener bLMListener = null;
+
+
         public BLMHelper()
         {
         }
 
         public void DeInitPlugin()
         {
-            //_ffxivPlugin.DataSubscription.ProcessChanged -= ProcessChanged;
+            BlmForm.Dispose();
+            bLMListener.Close();
+            MPTicker.GetMpTicker().Dispose();
         }
 
         void IActPluginV1.InitPlugin(TabPage pluginScreenSpace, Label pluginStatusText)
@@ -29,7 +33,7 @@ namespace BLMHelper
             pluginScreenSpace.Controls.Add(BlmForm);
 
             _ffxiv_Plugin = GetFfxivPlugin();
-            BLMListener bLMListener = new BLMListener(_ffxiv_Plugin, BlmForm);
+            bLMListener = new BLMListener(_ffxiv_Plugin, BlmForm);
 
             pluginStatusText.Text = "黑魔助手启动";
         }

@@ -4,17 +4,65 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace BLMHelper
 {
-    public class MPTicker: Form
+    public class MPTicker : Form
     {
-        public ProgressBar progressBar1;
+        private RoundCorneredProgressBar.RoundCorneredProgressBar rcp;
         private static MPTicker mpTicker;
+
+        public int x { get; set; }
+        public int y { get; set; }
+
         private MPTicker()
         {
             this.InitializeComponent();
+            this.x = this.Location.X;
+            this.y = this.Location.Y;
         }
+
+        private void InitializeComponent()
+        {
+            this.rcp = new RoundCorneredProgressBar.RoundCorneredProgressBar();
+            ((System.ComponentModel.ISupportInitialize)(this.rcp)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // rcp
+            // 
+            this.rcp.BackColor = System.Drawing.SystemColors.ButtonShadow;
+            this.rcp.Location = new System.Drawing.Point(1, 1);
+            this.rcp.Name = "rcp";
+            this.rcp.ProgressBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.rcp.ProgressBarColor = System.Drawing.Color.OrangeRed;
+            this.rcp.ProgressFont = new System.Drawing.Font("宋体", 35F, System.Drawing.FontStyle.Bold);
+            this.rcp.ProgressFontColor = System.Drawing.Color.Black;
+            this.rcp.Size = new System.Drawing.Size(150, 15);
+            this.rcp.TabIndex = 2;
+            this.rcp.TabStop = false;
+            this.rcp.Value = 300;
+            // 
+            // MPTicker
+            // 
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.BackColor = System.Drawing.Color.Red;
+            this.ClientSize = new System.Drawing.Size(160, 20);
+            this.Controls.Add(this.rcp);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "MPTicker";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.TopMost = true;
+            this.TransparencyKey = System.Drawing.Color.Red;
+            ((System.ComponentModel.ISupportInitialize)(this.rcp)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
         public static MPTicker GetMpTicker()
         {
             if (mpTicker == null)
@@ -27,39 +75,69 @@ namespace BLMHelper
             }
         }
 
-        public void Start()
+        public void SetLocation(String x, String y)
         {
-            
+            int x_int, y_int;
+            try
+            {
+                int.TryParse(x, out x_int);
+                int.TryParse(y, out y_int);
+                this.Location = new System.Drawing.Point(x_int, y_int);
+            }
+            catch
+            {
+            }
         }
 
-        private void InitializeComponent()
+        /// <summary>
+        /// 显示计时器
+        /// </summary>
+        public void ShowTicker()
         {
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.SuspendLayout();
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Location = new System.Drawing.Point(0, 0);
-            this.progressBar1.MarqueeAnimationSpeed = 1000;
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(150, 10);
-            this.progressBar1.TabIndex = 0;
-            // 
-            // MPTicker
-            // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.ClientSize = new System.Drawing.Size(150, 10);
-            this.Controls.Add(this.progressBar1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Location = new System.Drawing.Point(100, 100);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "MPTicker";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.TopMost = true;
-            this.ResumeLayout(false);
+            this.Show();
+        }
 
+        /// <summary>
+        /// 隐藏计时器
+        /// </summary>
+        public void HideTicker()
+        {
+            this.Hide();
+        }
+
+        /// <summary>
+        /// 若差异小于200ms，不重置计时器，保持计时器活跃状态
+        /// </summary>
+        public void SyncAndStart()
+        {
+            if (rcp.GetSign() > 20 || rcp.GetSign() < 280)
+            {
+                rcp.SyncMP();
+            }
+        }
+
+        /// <summary>
+        /// 从0开始计时
+        /// </summary>
+        public void Start()
+        {
+            this.rcp.Start();
+        }
+
+        /// <summary>
+        /// 暂停计时器
+        /// </summary>
+        public void Stop()
+        { 
+            this.rcp.Stop();
+        }
+
+        /// <summary>
+        /// 返回计时器运行状态
+        /// </summary>
+        public bool TickerEnable()
+        {
+            return this.rcp.TickerEnable();
         }
     }
 }

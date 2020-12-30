@@ -115,8 +115,7 @@ namespace ACT_Plugin
 		{
 			// Unsubscribe from any events you listen to when exiting!
 			ActGlobals.oFormActMain.AfterCombatAction -= oFormActMain_AfterCombatAction;
-
-			SaveSettings();
+            SaveSettings();
 			lblStatus.Text = "Plugin Exited";
 		}
 		#endregion

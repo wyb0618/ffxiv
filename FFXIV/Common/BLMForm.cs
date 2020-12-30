@@ -11,10 +11,15 @@ namespace BLMHelper
     public class BLMForm : UserControl
     {
         private GroupBox groupBox1;
-        private CheckBox checkBox2;
-        private CheckBox checkBox1;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private CheckBox mpTicker_check;
+        private TextBox act_msg;
+        private TextBox output_msg;
+        private Label label2;
+        private Label label1;
+        private TextBox bar_y;
+
+        private TextBox bar_x;
+        private Button reset_button;
 
         #region Designer Created Code (Avoid editing)
         /// <summary> 
@@ -44,80 +49,123 @@ namespace BLMHelper
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.reset_button = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.bar_y = new System.Windows.Forms.TextBox();
+            this.bar_x = new System.Windows.Forms.TextBox();
+            this.mpTicker_check = new System.Windows.Forms.CheckBox();
+            this.act_msg = new System.Windows.Forms.TextBox();
+            this.output_msg = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.checkBox2);
-            this.groupBox1.Controls.Add(this.checkBox1);
+            this.groupBox1.Controls.Add(this.reset_button);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.bar_y);
+            this.groupBox1.Controls.Add(this.bar_x);
+            this.groupBox1.Controls.Add(this.mpTicker_check);
             this.groupBox1.Location = new System.Drawing.Point(19, 26);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(200, 100);
+            this.groupBox1.Size = new System.Drawing.Size(374, 100);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "资源监视";
             // 
-            // checkBox2
+            // reset_button
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(25, 49);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(107, 19);
-            this.checkBox2.TabIndex = 3;
-            this.checkBox2.Text = "Fire X监视";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.reset_button.Location = new System.Drawing.Point(284, 25);
+            this.reset_button.Name = "reset_button";
+            this.reset_button.Size = new System.Drawing.Size(75, 23);
+            this.reset_button.TabIndex = 8;
+            this.reset_button.Text = "reset";
+            this.reset_button.UseVisualStyleBackColor = true;
+            this.reset_button.Click += new System.EventHandler(this.reset_button_Click);
             // 
-            // checkBox1
+            // label2
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(25, 24);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(89, 19);
-            this.checkBox1.TabIndex = 2;
-            this.checkBox1.Text = "回蓝监视";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(130, 56);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(23, 15);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Y:";
             // 
-            // textBox1
+            // label1
             // 
-            this.textBox1.Location = new System.Drawing.Point(44, 132);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(831, 115);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "测试消息：";
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(130, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(23, 15);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "X:";
             // 
-            // textBox2
+            // bar_y
             // 
-            this.textBox2.Location = new System.Drawing.Point(44, 267);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(831, 115);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.Text = "OUTPUT：";
+            this.bar_y.Location = new System.Drawing.Point(159, 53);
+            this.bar_y.Name = "bar_y";
+            this.bar_y.Size = new System.Drawing.Size(100, 25);
+            this.bar_y.TabIndex = 4;
+            // 
+            // bar_x
+            // 
+            this.bar_x.Location = new System.Drawing.Point(159, 22);
+            this.bar_x.Name = "bar_x";
+            this.bar_x.Size = new System.Drawing.Size(100, 25);
+            this.bar_x.TabIndex = 5;
+            // 
+            // mpTicker_check
+            // 
+            this.mpTicker_check.AutoSize = true;
+            this.mpTicker_check.Location = new System.Drawing.Point(25, 24);
+            this.mpTicker_check.Name = "mpTicker_check";
+            this.mpTicker_check.Size = new System.Drawing.Size(89, 19);
+            this.mpTicker_check.TabIndex = 2;
+            this.mpTicker_check.Text = "回蓝监视";
+            this.mpTicker_check.UseVisualStyleBackColor = true;
+            this.mpTicker_check.CheckedChanged += new System.EventHandler(this.mpTicker_check_CheckedChanged);
+            // 
+            // act_msg
+            // 
+            this.act_msg.Location = new System.Drawing.Point(44, 132);
+            this.act_msg.Multiline = true;
+            this.act_msg.Name = "act_msg";
+            this.act_msg.Size = new System.Drawing.Size(831, 115);
+            this.act_msg.TabIndex = 2;
+            this.act_msg.Text = "测试消息：";
+            // 
+            // output_msg
+            // 
+            this.output_msg.Location = new System.Drawing.Point(44, 267);
+            this.output_msg.Multiline = true;
+            this.output_msg.Name = "output_msg";
+            this.output_msg.Size = new System.Drawing.Size(831, 115);
+            this.output_msg.TabIndex = 3;
+            this.output_msg.Text = "OUTPUT：";
             // 
             // BLMForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.output_msg);
+            this.Controls.Add(this.act_msg);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "BLMForm";
             this.Size = new System.Drawing.Size(915, 443);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BLMForm_MouseMove);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void reset_button_Click(object sender, EventArgs e)
+        {
+            MPTicker.GetMpTicker().SetLocation(this.bar_x.Text, this.bar_y.Text);
         }
 
         #endregion
@@ -126,30 +174,16 @@ namespace BLMHelper
         public BLMForm()
         {
             InitializeComponent();
-        }
-        
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
+            this.bar_x.Text = MPTicker.GetMpTicker().DesktopLocation.X.ToString();
+            this.bar_y.Text = MPTicker.GetMpTicker().DesktopLocation.Y.ToString();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void mpTicker_check_CheckedChanged(object sender, EventArgs e)
         {
-
-        }
-
-        public void printMsg(String msg)
-        {
-            textBox1.Text = textBox1.Text + msg;
-        }
-
-        public void printOut(String msg)
-        {
-            textBox2.Text = textBox2.Text + msg;
-        }
-
-        private void BLMForm_MouseMove(object sender, MouseEventArgs e)
-        {
-
+            if (mpTicker_check.Checked)
+                MPTicker.GetMpTicker().ShowTicker();
+            else
+                MPTicker.GetMpTicker().HideTicker();
         }
     }
 }

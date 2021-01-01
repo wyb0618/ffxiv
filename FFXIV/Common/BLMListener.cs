@@ -27,8 +27,8 @@ namespace BLMHelper
             this.bLMForm = bLMForm;
             player = _ffxiv_Plugin.DataRepository.GetPlayer();
 
-            if (player.JobID == 25)
-                AddDelegate();
+            //if (player.JobID == 25)
+            //    AddDelegate();
 
             _ffxiv_Plugin.DataSubscription.PlayerStatsChanged += new PlayerStatsChangedDelegate(PlayerStatsChangedHandler);
 

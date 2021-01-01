@@ -20,6 +20,7 @@ namespace BLMHelper
 
         private TextBox bar_x;
         private Button reset_button;
+        private Button button1;
 
         #region Designer Created Code (Avoid editing)
         /// <summary> 
@@ -57,11 +58,13 @@ namespace BLMHelper
             this.mpTicker_check = new System.Windows.Forms.CheckBox();
             this.act_msg = new System.Windows.Forms.TextBox();
             this.output_msg = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.reset_button);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -109,6 +112,7 @@ namespace BLMHelper
             this.bar_y.Name = "bar_y";
             this.bar_y.Size = new System.Drawing.Size(100, 25);
             this.bar_y.TabIndex = 4;
+            this.bar_x.Text = MPTicker.GetMpTicker().DesktopLocation.X.ToString();
             // 
             // bar_x
             // 
@@ -116,6 +120,7 @@ namespace BLMHelper
             this.bar_x.Name = "bar_x";
             this.bar_x.Size = new System.Drawing.Size(100, 25);
             this.bar_x.TabIndex = 5;
+            this.bar_y.Text = MPTicker.GetMpTicker().DesktopLocation.Y.ToString();
             // 
             // mpTicker_check
             // 
@@ -146,6 +151,16 @@ namespace BLMHelper
             this.output_msg.TabIndex = 3;
             this.output_msg.Text = "OUTPUT：";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(25, 53);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "reset";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // BLMForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
@@ -174,8 +189,6 @@ namespace BLMHelper
         public BLMForm()
         {
             InitializeComponent();
-            this.bar_x.Text = MPTicker.GetMpTicker().DesktopLocation.X.ToString();
-            this.bar_y.Text = MPTicker.GetMpTicker().DesktopLocation.Y.ToString();
         }
 
         private void mpTicker_check_CheckedChanged(object sender, EventArgs e)
@@ -183,12 +196,10 @@ namespace BLMHelper
             if (mpTicker_check.Checked)
             {
                 MPTicker.GetMpTicker().ShowTicker();
-                this.add_msg2(MPTicker.GetMpTicker().Handle.ToString());
             }
             else
             {
                 MPTicker.GetMpTicker().HideTicker();
-
             }
         }
 
@@ -201,5 +212,12 @@ namespace BLMHelper
             this.output_msg.Text += str;
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(MPTicker.GetMpTicker().TickerEnable())
+               MPTicker.GetMpTicker().Stop();
+            else
+                MPTicker.GetMpTicker().Start();
+        }
     }
 }

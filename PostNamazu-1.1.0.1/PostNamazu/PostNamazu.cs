@@ -156,7 +156,7 @@ namespace PostNamazu
         ///     在游戏进程中执行给出的指令
         /// </summary>
         /// <param name="command">需要执行的指令</param>
-        private void DoTextCommand(string command)
+        public void DoTextCommand(string command)
         {
             if (FFXIV == null)
             {

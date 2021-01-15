@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.28307.1300
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLMHelper", "FFXIV\BLMHelper.csproj", "{9B1CECAF-DCE5-45B7-BC11-A8FAE9EB2187}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostNamazu", "PostNamazu-1.1.0.1\PostNamazu\PostNamazu.csproj", "{6BCDC806-F8C8-441C-BD5A-A323D242D73F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriggernometryPlugin", "Source\Triggernometry\TriggernometryPlugin.csproj", "{CA86FD05-FB30-4923-BB27-638CA9CBAFCD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TriggernometryProxy", "Source\TriggernometryProxy\TriggernometryProxy.csproj", "{AA747357-8F4A-4633-A631-B421CA05BC26}"
@@ -45,22 +43,6 @@ Global
 		{9B1CECAF-DCE5-45B7-BC11-A8FAE9EB2187}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9B1CECAF-DCE5-45B7-BC11-A8FAE9EB2187}.Release|x86.ActiveCfg = Release|Any CPU
 		{9B1CECAF-DCE5-45B7-BC11-A8FAE9EB2187}.Release|x86.Build.0 = Release|Any CPU
-		{6BCDC806-F8C8-441C-BD5A-A323D242D73F}.Debug_Ubuntu|Any CPU.ActiveCfg = Debug|Any CPU
-		{6BCDC806-F8C8-441C-BD5A-A323D242D73F}.Debug_Ubuntu|Any CPU.Build.0 = Debug|Any CPU
-		{6BCDC806-F8C8-441C-BD5A-A323D242D73F}.Debug_Ubuntu|x86.ActiveCfg = Debug|Any CPU
-		{6BCDC806-F8C8-441C-BD5A-A323D242D73F}.Debug_Ubuntu|x86.Build.0 = Debug|Any CPU
-		{6BCDC806-F8C8-441C-BD5A-A323D242D73F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6BCDC806-F8C8-441C-BD5A-A323D242D73F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6BCDC806-F8C8-441C-BD5A-A323D242D73F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{6BCDC806-F8C8-441C-BD5A-A323D242D73F}.Debug|x86.Build.0 = Debug|Any CPU
-		{6BCDC806-F8C8-441C-BD5A-A323D242D73F}.Release_Ubuntu|Any CPU.ActiveCfg = Release|Any CPU
-		{6BCDC806-F8C8-441C-BD5A-A323D242D73F}.Release_Ubuntu|Any CPU.Build.0 = Release|Any CPU
-		{6BCDC806-F8C8-441C-BD5A-A323D242D73F}.Release_Ubuntu|x86.ActiveCfg = Release|Any CPU
-		{6BCDC806-F8C8-441C-BD5A-A323D242D73F}.Release_Ubuntu|x86.Build.0 = Release|Any CPU
-		{6BCDC806-F8C8-441C-BD5A-A323D242D73F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6BCDC806-F8C8-441C-BD5A-A323D242D73F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6BCDC806-F8C8-441C-BD5A-A323D242D73F}.Release|x86.ActiveCfg = Release|Any CPU
-		{6BCDC806-F8C8-441C-BD5A-A323D242D73F}.Release|x86.Build.0 = Release|Any CPU
 		{CA86FD05-FB30-4923-BB27-638CA9CBAFCD}.Debug_Ubuntu|Any CPU.ActiveCfg = Debug|Any CPU
 		{CA86FD05-FB30-4923-BB27-638CA9CBAFCD}.Debug_Ubuntu|Any CPU.Build.0 = Debug|Any CPU
 		{CA86FD05-FB30-4923-BB27-638CA9CBAFCD}.Debug_Ubuntu|x86.ActiveCfg = Debug|Any CPU
@@ -146,7 +128,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {91001FDF-B748-4513-A399-35F7E9BD37F8}
 		        SolutionGuid = {2A11DDD1-7A46-4236-969A-3942CBE6A01A}
+		SolutionGuid = {91001FDF-B748-4513-A399-35F7E9BD37F8}
 	EndGlobalSection
 EndGlobal

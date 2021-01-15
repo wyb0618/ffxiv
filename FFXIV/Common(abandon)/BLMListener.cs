@@ -31,7 +31,6 @@ namespace BLMHelper
             //    AddDelegate();
 
             _ffxiv_Plugin.DataSubscription.PlayerStatsChanged += new PlayerStatsChangedDelegate(PlayerStatsChangedHandler);
-
         }
 
         public void AddDelegate()
@@ -44,8 +43,8 @@ namespace BLMHelper
         public void RemoveDelegate()
         {
             _ffxiv_Plugin.DataSubscription.ParsedLogLine -= ParsedLogLineDelegateHandler;
-            //_ffxiv_Plugin.DataSubscription.CombatantAdded -= CombatantAddedDelegateHandler;
-            //_ffxiv_Plugin.DataSubscription.CombatantRemoved -= CombatantRemovedDelegateHandler;
+          //_ffxiv_Plugin.DataSubscription.CombatantAdded -= CombatantAddedDelegateHandler;
+          //_ffxiv_Plugin.DataSubscription.CombatantRemoved -= CombatantRemovedDelegateHandler;
         }
 
         public void Close()

@@ -5,14 +5,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Advanced_Combat_Tracker;
+using PostNamazu;
 
 namespace BLMHelper
 {
     public class BLMHelper : IActPluginV1
     {
-        private FFXIV_ACT_Plugin.FFXIV_ACT_Plugin _ffxiv_Plugin = null;
-        private BLMForm BlmForm = null;
-        private BLMListener bLMListener = null;
+        public FFXIV_ACT_Plugin.FFXIV_ACT_Plugin ffxiv_Plugin = null;
+        public PostNamazu.PostNamazu postNamazu = null;
+        private MainListener mainListener;
 
 
         public BLMHelper()
@@ -21,21 +22,19 @@ namespace BLMHelper
 
         public void DeInitPlugin()
         {
-            BlmForm.Dispose();
-            bLMListener.Close();
-            MPTicker.GetMpTicker().Dispose();
         }
 
         void IActPluginV1.InitPlugin(TabPage pluginScreenSpace, Label pluginStatusText)
         {
-            BlmForm = new BLMForm();
-            pluginScreenSpace.Text = "黑魔助手";
-            pluginScreenSpace.Controls.Add(BlmForm);
+            pluginScreenSpace.Text = "小鬼的助手";
+            pluginScreenSpace.Controls.Add(null);
 
-            _ffxiv_Plugin = GetFfxivPlugin();
-            bLMListener = new BLMListener(_ffxiv_Plugin, BlmForm);
+            ffxiv_Plugin = GetFfxivPlugin();
+            postNamazu = GetPostNamazuPlugin();
 
-            pluginStatusText.Text = "黑魔助手启动";
+            mainListener = new MainListener(this);
+
+            pluginStatusText.Text = "小鬼的act助手启动！！！";
         }
 
         /// <summary>
@@ -50,6 +49,20 @@ namespace BLMHelper
                     actPluginData.lblPluginStatus.Text.ToUpper().Contains("FFXIV Plugin Started.".ToUpper()))
                     ffxivActPlugin = (FFXIV_ACT_Plugin.FFXIV_ACT_Plugin)actPluginData.pluginObj;
             return ffxivActPlugin ?? throw new Exception("找不到FFXIV解析插件");
+        }
+
+        /// <summary>
+        ///     取得鲶鱼精邮差插件的进程
+        /// </summary>
+        /// <returns></returns>
+        private PostNamazu.PostNamazu GetPostNamazuPlugin()
+        {
+            PostNamazu.PostNamazu postNamazu = null;
+            foreach (var actPluginData in ActGlobals.oFormActMain.ActPlugins)
+                if (actPluginData.pluginFile.Name.ToUpper().Contains("鲶鱼精邮差".ToUpper()) &&
+                    actPluginData.lblPluginStatus.Text.ToUpper().Contains("鲶鱼精邮差已启动".ToUpper()))
+                    postNamazu = (PostNamazu.PostNamazu)actPluginData.pluginObj;
+            return postNamazu ?? throw new Exception("找不到鲶鱼精邮差插件");
         }
     }
 }

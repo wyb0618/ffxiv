@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Advanced_Combat_Tracker;
 using PostNamazu;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace BLMHelper
 {
@@ -13,6 +15,7 @@ namespace BLMHelper
     {
         public FFXIV_ACT_Plugin.FFXIV_ACT_Plugin ffxiv_Plugin = null;
         public PostNamazu.PostNamazu postNamazu = null;
+        public MainForm mainForm;
         private MainListener mainListener;
 
 
@@ -22,19 +25,25 @@ namespace BLMHelper
 
         public void DeInitPlugin()
         {
+            mainListener.Dispose();
+            mainForm.Dispose();
         }
 
         void IActPluginV1.InitPlugin(TabPage pluginScreenSpace, Label pluginStatusText)
         {
+            
             pluginScreenSpace.Text = "小鬼的助手";
-            pluginScreenSpace.Controls.Add(null);
+
+            mainForm = new MainForm();
+
+            pluginScreenSpace.Controls.Add(mainForm);
 
             ffxiv_Plugin = GetFfxivPlugin();
-            postNamazu = GetPostNamazuPlugin();
-
-            mainListener = new MainListener(this);
+            //postNamazu = GetPostNamazuPlugin();
 
             pluginStatusText.Text = "小鬼的act助手启动！！！";
+            
+            mainListener = new MainListener(ffxiv_Plugin);
         }
 
         /// <summary>
@@ -57,12 +66,13 @@ namespace BLMHelper
         /// <returns></returns>
         private PostNamazu.PostNamazu GetPostNamazuPlugin()
         {
-            PostNamazu.PostNamazu postNamazu = null;
+            PostNamazu.PostNamazu pn = null;
             foreach (var actPluginData in ActGlobals.oFormActMain.ActPlugins)
-                if (actPluginData.pluginFile.Name.ToUpper().Contains("鲶鱼精邮差".ToUpper()) &&
-                    actPluginData.lblPluginStatus.Text.ToUpper().Contains("鲶鱼精邮差已启动".ToUpper()))
-                    postNamazu = (PostNamazu.PostNamazu)actPluginData.pluginObj;
-            return postNamazu ?? throw new Exception("找不到鲶鱼精邮差插件");
+                if (actPluginData.pluginFile.Name.ToUpper().Contains("PostNamazu".ToUpper()) &&
+                    actPluginData.lblPluginStatus.Text.ToUpper().Contains("鲶鱼精邮差已启动".ToUpper())) {
+                    pn = (PostNamazu.PostNamazu)actPluginData.pluginObj;
+                }
+            return pn ?? throw new Exception("找不到鲶鱼精邮差插件");
         }
     }
 }

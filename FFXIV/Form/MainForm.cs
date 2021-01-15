@@ -12,6 +12,7 @@ namespace BLMHelper
     {
         private GroupBox groupBox1;
         private Label label1;
+        public TextBox textBox1;
 
         #region Designer Created Code (Avoid editing)
         /// <summary> 
@@ -42,6 +43,7 @@ namespace BLMHelper
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,10 +66,19 @@ namespace BLMHelper
             this.label1.TabIndex = 2;
             this.label1.Text = "当你飞到以太步目标身边后，会对他进行感谢";
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(19, 123);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(876, 270);
+            this.textBox1.TabIndex = 2;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MainForm";
@@ -75,6 +86,7 @@ namespace BLMHelper
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
         

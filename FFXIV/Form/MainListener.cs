@@ -18,7 +18,7 @@ namespace BLMHelper
 
     //public event PlayerMPChangeDelegate OnPlayerMPChange;
 
-    class MainListener: IDisposable
+    class MainListener : IDisposable
     {
         private FFXIV_ACT_Plugin.FFXIV_ACT_Plugin ffxiv_Plugin = null;
         private string playername = "女拳斗士蒂法";
@@ -28,11 +28,13 @@ namespace BLMHelper
             this.ffxiv_Plugin = ffxiv_Plugin;
 
             ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(LogLineDelegateHandler);
+            ffxiv_Plugin.DataSubscription.ParsedLogLine += new ParsedLogLineDelegate(ParsedLogLineHandler);
         }
 
         public void Dispose()
         {
             ActGlobals.oFormActMain.OnLogLineRead -= LogLineDelegateHandler;
+            ffxiv_Plugin.DataSubscription.ParsedLogLine -= ParsedLogLineHandler;
         }
 
         public void LogLineDelegateHandler(bool isImport, LogLineEventArgs logInfo)
@@ -62,28 +64,31 @@ namespace BLMHelper
                         }
                         else
                         {
-                            dis_str = "非常感谢！";
+                            dis_str = "(*^▽^*)";
                         }
-                        string party_str = "/p " + playername + "使用以太步飞到" + obj[6] + "身边，飞行了" + String.Format("{0:N1}", dis) + "米（" + dis_str + "）。";
+                        string party_str = "/p " + playername + "使用以太步飞到" + obj[6] + "身边，飞行距离" + String.Format("{0:N1}", dis) + "米（" + dis_str + "）。";
 
-                        WebClient client = new WebClient();
-                        client.Encoding = Encoding.UTF8;
-                        client.Headers[HttpRequestHeader.ContentType] = "text";
-                        string response = client.UploadString("http://127.0.0.1:4869/command", party_str);
-                        client.Dispose();
+                        HttpUtils.sendCommand(party_str);
                     }
                 }
             }
 
-            //if(messagetype == "casting")
-            //{
-            //    lock (this)
-            //    {
-            //        if (!mpTicker.Visible)
-            //            mpTicker.ShowTicker();
-            //    }
-            //}
+        public void ParsedLogLineHandler(uint sequence, int messagetype, string message)
+        {
 
+            if(messagetype == 00)
+            {
+                //亚历山大错误记录
+                string[] obj = message.Split('|');
+                if (obj[2].Equals("000e")&& obj[4].Length>5 && obj[4].StartsWith("alex："))
+                {
+                    string name = MsgUtils.RmServerFromName(obj[3]);
+                    string result = obj[4].Substring(5);
+                    string rdmsg = "{\"name\":\"" + name + "\",\"result\":\"" + result + "\"}";
+                    HttpUtils.sendRecord(rdmsg);
+                }
+            }
         }
+    }
         
     }

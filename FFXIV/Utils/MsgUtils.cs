@@ -9,6 +9,22 @@ namespace FFXIV.Utils
 {
     class MsgUtils
     {
+        private static string[] server = new string[] { "紫水栈桥", "延夏", "静语庄园", "摩杜纳", "海猫茶屋", "柔风海湾", "琥珀原" };
+
+        //从名字中去除猫区服务器
+        public static string RmServerFromName(string name)
+        {
+            foreach(string sv in server)
+            {
+                if (sv.Equals(name)) return name;
+                if (name.EndsWith(sv))
+                {
+                    return name.Replace(sv, "");
+                }
+            }
+            return name;
+        }
+
         public static string GetZoneFromMsg(string message)
         {
             string temp = "01:Changed Zone to ";

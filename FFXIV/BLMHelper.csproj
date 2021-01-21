@@ -36,11 +36,11 @@
   <ItemGroup>
     <Reference Include="Advanced Combat Tracker, Version=3.5.0.273, Culture=neutral, PublicKeyToken=a946b61e93d97868, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>F:\FFcafe\ACT国服整合\Advanced Combat Tracker.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\FFCafe\ACT国服整合\Advanced Combat Tracker.dll</HintPath>
     </Reference>
     <Reference Include="FFXIV_ACT_Plugin, Version=2.0.7.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>F:\FFcafe\ACT国服整合\Plugins\FFXIV_ACT_Plugin\FFXIV_ACT_Plugin.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\FFCafe\ACT国服整合\Plugins\FFXIV_ACT_Plugin\FFXIV_ACT_Plugin.dll</HintPath>
     </Reference>
     <Reference Include="FFXIV_ACT_Plugin.Common">
       <HintPath>lib\FFXIV_ACT_Plugin.Common.dll</HintPath>
@@ -90,6 +90,7 @@
     <Compile Include="Common%28abandon%29\RoundCorneredProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Utils\HttpUtils.cs" />
     <Compile Include="Utils\MathUtils.cs" />
     <Compile Include="Utils\MsgUtils.cs" />
   </ItemGroup>

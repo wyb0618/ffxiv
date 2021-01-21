@@ -87,6 +87,20 @@ namespace BLMHelper
                     string rdmsg = "{\"name\":\"" + name + "\",\"result\":\"" + result + "\"}";
                     HttpUtils.sendRecord(rdmsg);
                 }
+
+                //亚历山大错误记录指名
+                if (obj[2].Equals("000e") && obj[4].Length > 5 && obj[4].StartsWith("Alex："))
+                {
+                    try {
+                       string result_name = obj[4].Substring(5);
+                       string[] rs = result_name.Split('@');
+                       string rdmsg = "{\"name\":\"" + rs[0] + "\",\"result\":\"" + rs[1] + "\"}";
+                       HttpUtils.sendRecord(rdmsg);
+                    }catch(Exception e)
+                    {
+
+                    }
+                }
             }
         }
     }

@@ -63,8 +63,8 @@ namespace FFXIV.Models
                 HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id - 7]) + "：小光，站在3点，注意集合");
                 HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id - 5]) + "：小光，站在3点，注意集合");
                 HttpUtils.sendCommand("/p ----------");
-                HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id - 6]) + "：小暗蓝线，站在4点；注意贴！电！网！引！导！");
-                HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id - 2]) + "：小暗无线，3、4点中间；注意贴！电！网！引！导！");
+                HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id - 6]) + "：小暗蓝线，站在4点；注意引！导！超！级！跳！");
+                HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id - 2]) + "：小暗无线，3、4点中间；注意引！导！超！级！跳！");
                 HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id - 4]) + "：小暗近线，站在3点；注意集合");
 
 

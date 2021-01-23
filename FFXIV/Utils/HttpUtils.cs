@@ -10,41 +10,50 @@ namespace FFXIV.Utils
 {
     public static class HttpUtils
     {
-        public static void sendCommand(string command)
+        public static void sendCommandSync(string command)
         {
             new Thread(() => {
-                WebClient client = new WebClient();
-                try
-                {
-                    client.Encoding = Encoding.UTF8;
-                    client.Headers[HttpRequestHeader.ContentType] = "text";
-                    string response = client.UploadString("http://127.0.0.1:4869/command", command);
-                    client.Dispose();
-                }
-                catch (Exception e)
-                {
-                    client.Dispose();
-                }
+                sendCommand(command);
             }).Start();
         }
 
-        public static void sendRecord(string rdmsg)
+        public static void sendRecordSync(string rdmsg)
         {
             new Thread(() => {
-                WebClient client = new WebClient();
-                try
-                {
-                    client.Encoding = Encoding.UTF8;
-                    client.Headers[HttpRequestHeader.ContentType] = "json";
-                    string response = client.UploadString("http://www.wyblearn.xyz:8080/record", rdmsg);
-                    sendCommand(response);
-                    client.Dispose();
-                }
-                catch (Exception e)
-                {
-                    client.Dispose();
-                }
+                sendRecord(rdmsg);
             }).Start();
+        }
+
+        public static void sendCommand(string command)
+        {
+            WebClient client = new WebClient();
+            try
+            {
+                client.Encoding = Encoding.UTF8;
+                client.Headers[HttpRequestHeader.ContentType] = "text";
+                string response = client.UploadString("http://127.0.0.1:4869/command", command);
+                client.Dispose();
+            }
+            catch (Exception e)
+            {
+                client.Dispose();
+            }
+        }
+        public static void sendRecord(string rdmsg)
+        {
+            WebClient client = new WebClient();
+            try
+            {
+                client.Encoding = Encoding.UTF8;
+                client.Headers[HttpRequestHeader.ContentType] = "json";
+                string response = client.UploadString("http://www.wyblearn.xyz:8080/record", rdmsg);
+                sendCommand(response);
+                client.Dispose();
+            }
+            catch (Exception e)
+            {
+                client.Dispose();
+            }
         }
     }
 }

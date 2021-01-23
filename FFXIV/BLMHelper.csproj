@@ -80,6 +80,7 @@
     <Compile Include="Form\MainForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Models\Shadow.cs" />
     <Compile Include="Utils\DBService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -112,9 +113,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config">

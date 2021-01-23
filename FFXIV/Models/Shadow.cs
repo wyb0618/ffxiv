@@ -12,6 +12,11 @@ namespace FFXIV.Models
         private static Dictionary<int, string> dic;
         private static int max_id = 0;
 
+        public static void clear()
+        {
+            dic.Clear();
+            max_id = 0;
+        }
         public static void add(string player_name, int shadow_id)
         {
             if (dic == null)
@@ -30,18 +35,18 @@ namespace FFXIV.Models
             if (dic.Count == 8)
             {
                 //左右是，面朝亚历山大方向
-                HttpUtils.sendCommand("/p " + dic[max_id] + "：分摊，右侧");
+                HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id]) + "：分摊，右侧");
                 HttpUtils.sendCommand("/p ----------");
                 //人群对面指其他7个人穿过场地圆心的斜对面
-                HttpUtils.sendCommand("/p " + dic[max_id - 1] + "：大圈，请去对面");
+                HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id - 1]) + "：大圈，请去对面");
                 HttpUtils.sendCommand("/p ----------");
-                HttpUtils.sendCommand("/p " + dic[max_id - 2] + "：闪电，请去人群左侧");
-                HttpUtils.sendCommand("/p " + dic[max_id - 3] + "：闪电，请去人群左侧");
-                HttpUtils.sendCommand("/p " + dic[max_id - 4] + "：闪电，请去人群左侧");
+                HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id - 2]) + "：闪电，请去人群左侧");
+                HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id - 3]) + "：闪电，请去人群左侧");
+                HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id - 4]) + "：闪电，请去人群左侧");
                 HttpUtils.sendCommand("/p ----------");
-                HttpUtils.sendCommand("/p " + dic[max_id - 5] + "：分摊，右侧");
-                HttpUtils.sendCommand("/p " + dic[max_id - 6] + "：分摊，右侧");
-                HttpUtils.sendCommand("/p " + dic[max_id - 7] + "：分摊，右侧");
+                HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id - 5]) + "：分摊，右侧");
+                HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id - 6]) + "：分摊，右侧");
+                HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id - 7]) + "：分摊，右侧");
 
                 dic.Clear();
                 max_id = 0;

@@ -94,13 +94,17 @@ namespace BLMHelper
                 if (obj[1].Equals("487B"))
                 {
                     HttpUtils.sendCommand("/p ----- @一测开始@ -----");
+                    ActGlobals.oFormActMain.OnLogLineRead -= AlexA;
                     ActGlobals.oFormActMain.OnLogLineRead -= AlexB;
+                    Shadow.clear();
                     ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(AlexA);
                 }
                 else if (obj[1].Equals("4B13"))
                 {
                     HttpUtils.sendCommand("/p ----- @二测开始@ -----");
                     ActGlobals.oFormActMain.OnLogLineRead -= AlexA;
+                    ActGlobals.oFormActMain.OnLogLineRead -= AlexB;
+                    Shadow.clear();
                     ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(AlexB);
                 }
             }
@@ -122,8 +126,10 @@ namespace BLMHelper
                     lock (typeof(Shadow)) {
                         Shadow.add(obj[2], shadowid);
                         if (Shadow.outputAlexA())
+                        {
                             ActGlobals.oFormActMain.OnLogLineRead -= AlexA;
-                        HttpUtils.sendCommand("----- @一测结束@ -----");
+                            HttpUtils.sendCommand("----- @一测结束@ -----");
+                        }
                     }
 
                 }

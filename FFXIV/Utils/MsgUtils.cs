@@ -47,5 +47,9 @@ namespace FFXIV.Utils
         {
             return DateTime.Now.ToString("yyyy-MM-dd") + " " + message.Substring(1, 12);
         }
+
+        public static void logs(string message) {
+
+        }
     }
 }

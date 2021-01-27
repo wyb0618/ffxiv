@@ -55,5 +55,10 @@ namespace FFXIV.Utils
                 client.Dispose();
             }
         }
+
+        public static void textBox(string cmd)
+        {
+            BLMHelper.BLMHelper.mainForm.textBox1.Text += cmd + "\r\n";
+        }
     }
 }

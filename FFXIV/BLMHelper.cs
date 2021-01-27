@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Advanced_Combat_Tracker;
-using PostNamazu;
+//using PostNamazu;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -14,8 +14,7 @@ namespace BLMHelper
     public class BLMHelper : IActPluginV1
     {
         public FFXIV_ACT_Plugin.FFXIV_ACT_Plugin ffxiv_Plugin = null;
-        public PostNamazu.PostNamazu postNamazu = null;
-        public MainForm mainForm;
+        public static MainForm mainForm;
         private MainListener mainListener;
 
 
@@ -64,15 +63,15 @@ namespace BLMHelper
         ///     取得鲶鱼精邮差插件的进程
         /// </summary>
         /// <returns></returns>
-        private PostNamazu.PostNamazu GetPostNamazuPlugin()
-        {
-            PostNamazu.PostNamazu pn = null;
-            foreach (var actPluginData in ActGlobals.oFormActMain.ActPlugins)
-                if (actPluginData.pluginFile.Name.ToUpper().Contains("PostNamazu".ToUpper()) &&
-                    actPluginData.lblPluginStatus.Text.ToUpper().Contains("鲶鱼精邮差已启动".ToUpper())) {
-                    pn = (PostNamazu.PostNamazu)actPluginData.pluginObj;
-                }
-            return pn ?? throw new Exception("找不到鲶鱼精邮差插件");
-        }
+        //private PostNamazu.PostNamazu GetPostNamazuPlugin()
+        //{
+        //    PostNamazu.PostNamazu pn = null;
+        //    foreach (var actPluginData in ActGlobals.oFormActMain.ActPlugins)
+        //        if (actPluginData.pluginFile.Name.ToUpper().Contains("PostNamazu".ToUpper()) &&
+        //            actPluginData.lblPluginStatus.Text.ToUpper().Contains("鲶鱼精邮差已启动".ToUpper())) {
+        //            pn = (PostNamazu.PostNamazu)actPluginData.pluginObj;
+        //        }
+        //    return pn ?? throw new Exception("找不到鲶鱼精邮差插件");
+        //}
     }
 }

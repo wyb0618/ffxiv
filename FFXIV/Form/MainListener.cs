@@ -29,7 +29,7 @@ namespace BLMHelper
         {
             this.ffxiv_Plugin = ffxiv_Plugin;
 
-            ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(LogLineDelegateHandler);
+            ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(BLM);
             ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(AlexRecorder);
             ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(ZoneChange);
             //ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(AlexAandB);
@@ -39,16 +39,17 @@ namespace BLMHelper
 
         public void Dispose()
         {
-            ActGlobals.oFormActMain.OnLogLineRead -= LogLineDelegateHandler;
+            ActGlobals.oFormActMain.OnLogLineRead -= BLM;
             ActGlobals.oFormActMain.OnLogLineRead -= AlexA;
             ActGlobals.oFormActMain.OnLogLineRead -= AlexB;
             ActGlobals.oFormActMain.OnLogLineRead -= AlexAandB;
+            ActGlobals.oFormActMain.OnLogLineRead -= Exflare;
             ActGlobals.oFormActMain.OnLogLineRead -= AlexRecorder;
             ActGlobals.oFormActMain.OnLogLineRead -= ZoneChange;
             //ffxiv_Plugin.DataSubscription.ParsedLogLine -= ParsedLogLineHandler;
         }
 
-        public void LogLineDelegateHandler(bool isImport, LogLineEventArgs logInfo)
+        public void BLM(bool isImport, LogLineEventArgs logInfo)
         {
             string message = logInfo.originalLogLine;
             string type = message.Substring(15, 2);
@@ -135,7 +136,7 @@ namespace BLMHelper
                 if (zn.Equals("亚历山大绝境战"))
                 {
                     ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(AlexAandB);
-                    
+                    ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(Exflare);
                     HttpUtils.sendCommand("/e P4 笨比提示器启动");
                 }
                 else
@@ -143,6 +144,7 @@ namespace BLMHelper
                     ActGlobals.oFormActMain.OnLogLineRead -= AlexA;
                     ActGlobals.oFormActMain.OnLogLineRead -= AlexB;
                     ActGlobals.oFormActMain.OnLogLineRead -= AlexAandB;
+                    ActGlobals.oFormActMain.OnLogLineRead -= Exflare;
                 }
             }
         }
@@ -236,6 +238,7 @@ namespace BLMHelper
             //15:400115BB:完美亚历山大:488F:神圣大审判:E0000000:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:0:44(33):44:0:10000:0:1000:84:116:
             //^.{14} 15:4[0-9A-F]{7}:[^:]*?:488F:.*?:44:44:0:10000:0:1000:(?<x>[^:]*?):(?<y>[^:]*?):
 
+
             string message = logInfo.originalLogLine;
             string type = message.Substring(15, 2);
 
@@ -254,19 +257,24 @@ namespace BLMHelper
                             Flare.setSleep();
                             ActGlobals.oFormActMain.OnLogLineRead -= Exflare;
                             new Thread(() => {
-                                Thread.Sleep(10000);
-                                lock (typeof(Flare))
-                                {
-                                    Flare.setAlive();
-                                }
+                                Thread.Sleep(15000);
+                                Flare.setAlive();
                                 ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(Exflare);
                             }).Start();
                         }
                     }
                 }
-            }
-        }
 
+            }
+
+
+            }
+
+        //食物提示助手
+        public void Food(bool isImport, LogLineEventArgs logInfo)
+        {
+
+        }
 
         //public void ParsedLogLineHandler(uint sequence, int messagetype, string message)
         //{
@@ -299,5 +307,4 @@ namespace BLMHelper
         //    }
         //}
     }
-        
-    }
+}

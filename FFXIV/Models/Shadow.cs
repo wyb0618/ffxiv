@@ -63,7 +63,7 @@ namespace FFXIV.Models
         {
             if (dic.Count == 8)
             {
-                HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id]) + "：大暗！，3、4对角线交点，站3、4中间的鲨了吧");
+                HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id]) + "：大暗！3、4对角线交点，站3、4中间的鲨了吧");
                 HttpUtils.sendCommand("/p ----------");
                 HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id - 1]) + "：大光，请在A点侧和电！网！贴！贴！");
                 HttpUtils.sendCommand("/p ----------");
@@ -74,7 +74,6 @@ namespace FFXIV.Models
                 HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id - 6]) + "：小暗蓝线，站在4点；注意引！导！超！级！跳！");
                 HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id - 2]) + "：小暗无线，3、4点中间；注意引！导！超！级！跳！");
                 HttpUtils.sendCommand("/p " + MsgUtils.RmServerFromName(dic[max_id - 4]) + "：小暗近线，站在3点；注意集合");
-
 
                 dic.Clear();
                 max_id = 0;

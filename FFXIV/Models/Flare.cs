@@ -25,6 +25,9 @@ namespace FFXIV.Models
             {
                 if (str1.Equals("") || str1.Equals(time))
                 {
+                    if(str1.Equals(""))
+                        HttpUtils.sendCommand("-----地火预警<se.1>-----");
+                    str1 = time;
                     if (id > max_id)
                     {
                         max_id = id;

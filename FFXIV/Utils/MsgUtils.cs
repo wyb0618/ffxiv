@@ -1,15 +1,19 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
+using Advanced_Combat_Tracker;
 
 namespace FFXIV.Utils
 {
     class MsgUtils
     {
         private static string[] server = new string[] { "紫水栈桥", "延夏", "静语庄园", "摩杜纳", "海猫茶屋", "柔风海湾", "琥珀原" };
+        public static StreamWriter sw = new StreamWriter("blmHelper_logline.log", false);
 
         //从名字中去除猫区服务器
         public static string RmServerFromName(string name)
@@ -48,8 +52,16 @@ namespace FFXIV.Utils
             return DateTime.Now.ToString("yyyy-MM-dd") + " " + message.Substring(1, 12);
         }
 
+        //输出本插件logline至根目录
         public static void logs(string message) {
+            sw.Flush();
+            sw.WriteLine(message);
+        }
 
+        //输出本插件logline至根目录
+        public static void WriteToLogline(string message)
+        {
+            ActGlobals.oFormActMain
         }
     }
 }

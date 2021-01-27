@@ -8,6 +8,7 @@ using Advanced_Combat_Tracker;
 //using PostNamazu;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using FFXIV.Utils;
 
 namespace BLMHelper
 {
@@ -26,6 +27,7 @@ namespace BLMHelper
         {
             mainListener.Dispose();
             mainForm.Dispose();
+            MsgUtils.sw.Close();
         }
 
         void IActPluginV1.InitPlugin(TabPage pluginScreenSpace, Label pluginStatusText)

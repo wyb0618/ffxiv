@@ -270,12 +270,11 @@ namespace BLMHelper
 
             }
 
-        //食物提示助手
-        public void Food(bool isImport, LogLineEventArgs logInfo)
+        
+        public void lianxi()
         {
 
         }
-
         //public void ParsedLogLineHandler(uint sequence, int messagetype, string message)
         //{
 

@@ -14,7 +14,10 @@ namespace FFXIV.Models
 
         public static void clear()
         {
-            dic.Clear();
+            if (dic != null)
+            {
+                dic.Clear();
+            }
             max_id = 0;
         }
         public static void add(string player_name, int shadow_id)

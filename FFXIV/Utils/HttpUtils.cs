@@ -45,9 +45,9 @@ namespace FFXIV.Utils
             try
             {
                 client.Encoding = Encoding.UTF8;
-                client.Headers[HttpRequestHeader.ContentType] = "json";
+                client.Headers[HttpRequestHeader.ContentType] = "application/json";
                 string response = client.UploadString("http://www.wyblearn.xyz:8080/record", rdmsg);
-                sendCommand(response);
+                sendCommand("/p "+response);
                 client.Dispose();
             }
             catch (Exception e)

@@ -61,7 +61,6 @@ namespace FFXIV.Utils
         //输出本插件logline至根目录
         public static void WriteToLogline(string message)
         {
-            ActGlobals.oFormActMain
         }
     }
 }

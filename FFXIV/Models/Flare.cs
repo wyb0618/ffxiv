@@ -45,27 +45,27 @@ namespace FFXIV.Models
                     switch (rs)
                     {
                         case "12":
-                            HttpUtils.sendCommand("/p     □  ↑↑");
+                            HttpUtils.sendCommand("/p        □  ↑↑");
                             HttpUtils.sendCommand("/p □□■  ↑↑");
                             break;
                         case "13":
-                            HttpUtils.sendCommand("/p     □  ←←");
+                            HttpUtils.sendCommand("/p        □  ←←");
                             HttpUtils.sendCommand("/p □■□  ←←");
                             break;
                         case "23":
-                            HttpUtils.sendCommand("/p     □  →→");
+                            HttpUtils.sendCommand("/p        □  →→");
                             HttpUtils.sendCommand("/p ■□□  →→");
                             break;
                         case "21":
-                            HttpUtils.sendCommand("/p     □  ←←");
+                            HttpUtils.sendCommand("/p        □  ←←");
                             HttpUtils.sendCommand("/p □□■  ←←");
                             break;
                         case "32":
-                            HttpUtils.sendCommand("/p     ■  ↓↓");
+                            HttpUtils.sendCommand("/p        ■  ↓↓");
                             HttpUtils.sendCommand("/p □□□  ↓↓");
                             break;
-                        case "31":
-                            HttpUtils.sendCommand("/p     □  →→");
+                        case "31": 
+                            HttpUtils.sendCommand("/p        □  →→");
                             HttpUtils.sendCommand("/p □■□  →→");
                             break;
                         default:

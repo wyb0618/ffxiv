@@ -35,11 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Advanced Combat Tracker">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\FFCafe\ACT国服整合\Advanced Combat Tracker.dll</HintPath>
+      <HintPath>F:\FFcafe\ACT国服整合\Advanced Combat Tracker.dll</HintPath>
     </Reference>
-    <Reference Include="FFXIV_ACT_Plugin, Version=2.0.7.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\FFCafe\ACT国服整合\Plugins\FFXIV_ACT_Plugin\FFXIV_ACT_Plugin.dll</HintPath>
+    <Reference Include="FFXIV_ACT_Plugin">
+      <HintPath>F:\FFcafe\ACT国服整合\Plugins\FFXIV_ACT_Plugin\FFXIV_ACT_Plugin.dll</HintPath>
     </Reference>
     <Reference Include="FFXIV_ACT_Plugin.Common">
       <HintPath>lib\FFXIV_ACT_Plugin.Common.dll</HintPath>

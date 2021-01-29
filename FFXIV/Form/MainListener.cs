@@ -252,7 +252,7 @@ namespace BLMHelper
                     lock (typeof(Flare))
                     {
                         //左中右 顺序是84、100、92
-                        if (Flare.AddTime(message.Substring(0, 14), Convert.ToInt32(obj[1], 16), obj[39]))
+                        if (Flare.AddTime(message.Substring(0, 9), Convert.ToInt32(obj[1], 16), obj[39]))
                         {
                             Flare.setSleep();
                             ActGlobals.oFormActMain.OnLogLineRead -= Exflare;

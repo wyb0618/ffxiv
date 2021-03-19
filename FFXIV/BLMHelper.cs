@@ -15,11 +15,12 @@ namespace BLMHelper
     public class BLMHelper : IActPluginV1
     {
         public FFXIV_ACT_Plugin.FFXIV_ACT_Plugin ffxiv_Plugin = null;
+        public static BLMHelper staticBlm = null;
         public static MainForm mainForm;
         private MainListener mainListener;
 
 
-        public BLMHelper()
+        private BLMHelper()
         {
         }
 
@@ -32,7 +33,8 @@ namespace BLMHelper
 
         void IActPluginV1.InitPlugin(TabPage pluginScreenSpace, Label pluginStatusText)
         {
-            
+            staticBlm = this;
+
             pluginScreenSpace.Text = "小鬼的助手";
 
             mainForm = new MainForm();

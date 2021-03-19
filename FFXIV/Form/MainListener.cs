@@ -271,9 +271,9 @@ namespace BLMHelper
             }
 
         
-        public void lianxi()
+        public void Alex2nd()
         {
-
+             
         }
         //public void ParsedLogLineHandler(uint sequence, int messagetype, string message)
         //{

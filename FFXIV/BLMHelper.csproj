@@ -35,10 +35,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Advanced Combat Tracker">
-      <HintPath>F:\FFcafe\ACT国服整合\Advanced Combat Tracker.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\FFCafe\ACT国服整合\Advanced Combat Tracker.dll</HintPath>
     </Reference>
     <Reference Include="FFXIV_ACT_Plugin">
-      <HintPath>F:\FFcafe\ACT国服整合\Plugins\FFXIV_ACT_Plugin\FFXIV_ACT_Plugin.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\FFCafe\ACT国服整合\Plugins\FFXIV_ACT_Plugin\FFXIV_ACT_Plugin.dll</HintPath>
     </Reference>
     <Reference Include="FFXIV_ACT_Plugin.Common">
       <HintPath>lib\FFXIV_ACT_Plugin.Common.dll</HintPath>
@@ -74,6 +74,7 @@
     <Compile Include="Form\MainForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Models\Alex2nd.cs" />
     <Compile Include="Models\Flare.cs" />
     <Compile Include="Models\Shadow.cs" />
     <Compile Include="Utils\DBService.cs" />
@@ -108,7 +109,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config">

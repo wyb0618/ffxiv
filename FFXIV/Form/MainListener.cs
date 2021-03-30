@@ -29,7 +29,9 @@ namespace BLMHelper
         {
             this.ffxiv_Plugin = ffxiv_Plugin;
 
-            ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(BLM);
+            //ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(Alex2ndPractice);
+
+            //ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(BLM);
             ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(AlexRecorder);
             ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(ZoneChange);
             //ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(AlexAandB);
@@ -46,6 +48,8 @@ namespace BLMHelper
             ActGlobals.oFormActMain.OnLogLineRead -= Exflare;
             ActGlobals.oFormActMain.OnLogLineRead -= AlexRecorder;
             ActGlobals.oFormActMain.OnLogLineRead -= ZoneChange;
+
+            //ActGlobals.oFormActMain.OnLogLineRead -= Alex2ndPractice;
             //ffxiv_Plugin.DataSubscription.ParsedLogLine -= ParsedLogLineHandler;
         }
 
@@ -270,10 +274,29 @@ namespace BLMHelper
 
             }
 
-        
-        public void Alex2nd()
+
+        public void Alex2ndPractice(bool isImport, LogLineEventArgs logInfo)
         {
-             
+            string message = logInfo.originalLogLine;
+            string type = message.Substring(15, 2);
+
+            //[01:38:47.000] 00:000e:女拳斗士蒂法:1
+
+            if (type != null && type.Equals("00"))
+            {
+                string rs = message.Substring(15);
+                string[] obj = rs.Split(':');
+
+                if (obj[1].Equals("000a"))
+                {
+                    if (obj[3].StartsWith("Alex2nd"))
+                    {
+                        new Thread(() => {
+                            Alex2nd.Timeline();
+                        }).Start();
+                    }
+                }
+            }
         }
         //public void ParsedLogLineHandler(uint sequence, int messagetype, string message)
         //{

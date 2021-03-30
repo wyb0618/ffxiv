@@ -20,7 +20,7 @@ namespace BLMHelper
         private MainListener mainListener;
 
 
-        private BLMHelper()
+        public BLMHelper()
         {
         }
 

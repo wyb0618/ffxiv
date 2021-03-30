@@ -76,6 +76,7 @@
     </Compile>
     <Compile Include="Models\Alex2nd.cs" />
     <Compile Include="Models\Flare.cs" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Shadow.cs" />
     <Compile Include="Utils\DBService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -32,7 +32,7 @@ namespace BLMHelper
             //ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(Alex2ndPractice);
 
             //ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(BLM);
-            ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(AlexRecorder);
+            //ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(AlexRecorder);
             ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(ZoneChange);
             //ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(AlexAandB);
 
@@ -48,8 +48,8 @@ namespace BLMHelper
             ActGlobals.oFormActMain.OnLogLineRead -= Exflare;
             ActGlobals.oFormActMain.OnLogLineRead -= AlexRecorder;
             ActGlobals.oFormActMain.OnLogLineRead -= ZoneChange;
+            ActGlobals.oFormActMain.OnLogLineRead -= Alex2ndPractice;
 
-            //ActGlobals.oFormActMain.OnLogLineRead -= Alex2ndPractice;
             //ffxiv_Plugin.DataSubscription.ParsedLogLine -= ParsedLogLineHandler;
         }
 

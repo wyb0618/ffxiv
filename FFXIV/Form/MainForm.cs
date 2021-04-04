@@ -11,10 +11,10 @@ namespace BLMHelper
     public class MainForm : UserControl
     {
         private GroupBox groupBox1;
-        private Label label1;
-        public TextBox textBox1;
+        private TextBox Alex_channel;
         private Label label2;
-        private Button button1;
+        private TextBox Alex_bossname;
+        private Label label1;
 
         #region Designer Created Code (Avoid editing)
         /// <summary> 
@@ -44,66 +44,62 @@ namespace BLMHelper
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Alex_channel = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Alex_bossname = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Alex_channel);
             this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.Alex_bossname);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(19, 26);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(388, 129);
+            this.groupBox1.Size = new System.Drawing.Size(370, 129);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "？？？";
+            this.groupBox1.Text = "绝亚笨比提示装置";
             // 
-            // label1
+            // Alex_channel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(307, 15);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "当你飞到以太步目标身边后，会对他进行感谢";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(19, 161);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(876, 167);
-            this.textBox1.TabIndex = 2;
+            this.Alex_channel.Location = new System.Drawing.Point(92, 53);
+            this.Alex_channel.Name = "Alex_channel";
+            this.Alex_channel.Size = new System.Drawing.Size(263, 25);
+            this.Alex_channel.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 60);
+            this.label2.Location = new System.Drawing.Point(7, 56);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(307, 15);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "当你飞到以太步目标身边后，会对他进行感谢";
+            this.label2.Size = new System.Drawing.Size(63, 15);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Channel";
             // 
-            // button1
+            // Alex_bossname
             // 
-            this.button1.Location = new System.Drawing.Point(19, 343);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Alex_bossname.Location = new System.Drawing.Point(92, 22);
+            this.Alex_bossname.Name = "Alex_bossname";
+            this.Alex_bossname.Size = new System.Drawing.Size(263, 25);
+            this.Alex_bossname.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 25);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(79, 15);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Boss Name";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MainForm";
@@ -111,7 +107,6 @@ namespace BLMHelper
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
         
@@ -122,14 +117,16 @@ namespace BLMHelper
         {
             InitializeComponent();
         }
-
-        private void bar_x_TextChanged(object sender, EventArgs e)
+        
+        public string GetALexBossName()
         {
+            return Alex_bossname.Text;
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public string GetALexChannel()
         {
+            return Alex_channel.Text;
 
         }
     }

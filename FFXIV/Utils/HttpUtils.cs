@@ -24,6 +24,11 @@ namespace FFXIV.Utils
             }).Start();
         }
 
+        public static void sendCommandWithChannel(string channel,string command)
+        {
+            sendCommand(channel + " " + command);
+        }
+
         public static void sendCommand(string command)
         {
             WebClient client = new WebClient();
@@ -54,11 +59,6 @@ namespace FFXIV.Utils
             {
                 client.Dispose();
             }
-        }
-
-        public static void textBox(string cmd)
-        {
-            BLMHelper.BLMHelper.mainForm.textBox1.Text += cmd + "\r\n";
         }
     }
 }

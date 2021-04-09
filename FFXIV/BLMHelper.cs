@@ -18,6 +18,7 @@ namespace BLMHelper
         public static BLMHelper staticBlm = null;
         public static MainForm mainForm;
         private MainListener mainListener;
+        private ChatListener chatListener;
 
 
         public BLMHelper()
@@ -30,7 +31,7 @@ namespace BLMHelper
             mainForm.Dispose();
             MsgUtils.sw.Close();
         }
-
+        
         void IActPluginV1.InitPlugin(TabPage pluginScreenSpace, Label pluginStatusText)
         {
             staticBlm = this;
@@ -47,6 +48,7 @@ namespace BLMHelper
             pluginStatusText.Text = "小鬼的act助手启动！！！";
             
             mainListener = new MainListener(ffxiv_Plugin);
+            chatListener = new ChatListener(ffxiv_Plugin);
         }
 
         /// <summary>

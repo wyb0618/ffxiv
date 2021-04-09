@@ -70,11 +70,13 @@
     <Compile Include="Common%28abandon%29\MPTicker.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Form\ChatListener.cs" />
     <Compile Include="Form\MainListener.cs" />
     <Compile Include="Form\MainForm.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Models\Alex2nd.cs" />
+    <Compile Include="Models\DataRder.cs" />
     <Compile Include="Models\Flare.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Shadow.cs" />

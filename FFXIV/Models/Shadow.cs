@@ -55,7 +55,7 @@ namespace FFXIV.Models
 
                 if (!bossname.Equals("") && MsgUtils.RmServerFromName(dic[max_id - 1]).Equals(bossname))
                     //人群对面指其他7个人穿过场地圆心的斜对面
-                    HttpUtils.sendCommand(channel+" " + MsgUtils.RmServerFromName(dic[max_id - 1]) + "：大圈，请去对面");
+                    HttpUtils.sendCommand(channel+" " + MsgUtils.RmServerFromName(dic[max_id - 1]) + "：大圈大圈，人群中间（不是");
 
                 if (bossname.Equals(""))
                     HttpUtils.sendCommand(channel+" ----------");
@@ -92,37 +92,37 @@ namespace FFXIV.Models
             if (dic.Count == 8)
             {
                 if (!bossname.Equals("") && MsgUtils.RmServerFromName(dic[max_id]).Equals(bossname))
-                    HttpUtils.sendCommand(channel+" " + MsgUtils.RmServerFromName(dic[max_id]) + "：大暗！3、4对角线交点，站3、4中间的鲨了吧");
+                    HttpUtils.sendCommand(channel+" " + MsgUtils.RmServerFromName(dic[max_id]) + "：大暗，站对角");
 
                 if (bossname.Equals(""))
                     HttpUtils.sendCommand(channel+" ----------");
 
                 if (!bossname.Equals("") && MsgUtils.RmServerFromName(dic[max_id - 1]).Equals(bossname))
-                    HttpUtils.sendCommand(channel+" " + MsgUtils.RmServerFromName(dic[max_id - 1]) + "：大光，请在A点侧和电！网！贴！贴！");
+                    HttpUtils.sendCommand(channel+" " + MsgUtils.RmServerFromName(dic[max_id - 1]) + "：大光，贴电网");
 
                 if (bossname.Equals(""))
                     HttpUtils.sendCommand(channel+" ----------");
 
                 if (!bossname.Equals("") && MsgUtils.RmServerFromName(dic[max_id - 3]).Equals(bossname))
-                    HttpUtils.sendCommand(channel+" " + MsgUtils.RmServerFromName(dic[max_id - 3]) + "：小光，站在3点，注意集合");
+                    HttpUtils.sendCommand(channel+" " + MsgUtils.RmServerFromName(dic[max_id - 3]) + "：小光，判定后注意集合");
 
                 if (!bossname.Equals("") && MsgUtils.RmServerFromName(dic[max_id - 7]).Equals(bossname))
-                    HttpUtils.sendCommand(channel+" " + MsgUtils.RmServerFromName(dic[max_id - 7]) + "：小光，站在3点，注意集合");
+                    HttpUtils.sendCommand(channel+" " + MsgUtils.RmServerFromName(dic[max_id - 7]) + "：小光，判定后注意集合");
 
                 if (!bossname.Equals("") && MsgUtils.RmServerFromName(dic[max_id - 5]).Equals(bossname))
-                    HttpUtils.sendCommand(channel+" " + MsgUtils.RmServerFromName(dic[max_id - 5]) + "：小光，站在3点，注意集合");
+                    HttpUtils.sendCommand(channel+" " + MsgUtils.RmServerFromName(dic[max_id - 5]) + "：小光，判定后注意集合");
 
                 if (bossname.Equals(""))
                     HttpUtils.sendCommand(channel+" ----------");
 
                 if (!bossname.Equals("") && MsgUtils.RmServerFromName(dic[max_id - 6]).Equals(bossname))
-                    HttpUtils.sendCommand(channel+" " + MsgUtils.RmServerFromName(dic[max_id - 6]) + "：小暗蓝线，站在4点；注意引！导！超！级！跳！");
+                    HttpUtils.sendCommand(channel+" " + MsgUtils.RmServerFromName(dic[max_id - 6]) + "：小暗蓝线，注意引！导！超！级！跳！");
 
                 if (!bossname.Equals("") && MsgUtils.RmServerFromName(dic[max_id - 2]).Equals(bossname))
-                    HttpUtils.sendCommand(channel+" " + MsgUtils.RmServerFromName(dic[max_id - 2]) + "：小暗无线，3、4点中间；注意引！导！超！级！跳！");
+                    HttpUtils.sendCommand(channel+" " + MsgUtils.RmServerFromName(dic[max_id - 2]) + "：小暗无线，注意引！导！超！级！跳！");
 
                 if (!bossname.Equals("") && MsgUtils.RmServerFromName(dic[max_id - 4]).Equals(bossname))
-                    HttpUtils.sendCommand(channel+" " + MsgUtils.RmServerFromName(dic[max_id - 4]) + "：小暗近线，站在3点；注意集合");
+                    HttpUtils.sendCommand(channel+" " + MsgUtils.RmServerFromName(dic[max_id - 4]) + "：小暗近线，注意集合");
 
                 dic.Clear();
                 max_id = 0;

@@ -15,6 +15,8 @@ namespace BLMHelper
         private Label label2;
         private TextBox Alex_bossname;
         private Label label1;
+        private CheckBox Alex_on;
+        private CheckBox AutoInvite;
 
         #region Designer Created Code (Avoid editing)
         /// <summary> 
@@ -44,29 +46,42 @@ namespace BLMHelper
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.Alex_on = new System.Windows.Forms.CheckBox();
             this.Alex_channel = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.Alex_bossname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.AutoInvite = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.Alex_on);
             this.groupBox1.Controls.Add(this.Alex_channel);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.Alex_bossname);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(19, 26);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(370, 129);
+            this.groupBox1.Size = new System.Drawing.Size(370, 110);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "绝亚笨比提示装置";
             // 
+            // Alex_on
+            // 
+            this.Alex_on.AutoSize = true;
+            this.Alex_on.Location = new System.Drawing.Point(19, 19);
+            this.Alex_on.Name = "Alex_on";
+            this.Alex_on.Size = new System.Drawing.Size(59, 19);
+            this.Alex_on.TabIndex = 2;
+            this.Alex_on.Text = "启动";
+            this.Alex_on.UseVisualStyleBackColor = true;
+            // 
             // Alex_channel
             // 
-            this.Alex_channel.Location = new System.Drawing.Point(92, 53);
+            this.Alex_channel.Location = new System.Drawing.Point(101, 75);
             this.Alex_channel.Name = "Alex_channel";
             this.Alex_channel.Size = new System.Drawing.Size(263, 25);
             this.Alex_channel.TabIndex = 3;
@@ -74,7 +89,7 @@ namespace BLMHelper
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(7, 56);
+            this.label2.Location = new System.Drawing.Point(16, 78);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(63, 15);
             this.label2.TabIndex = 2;
@@ -82,7 +97,7 @@ namespace BLMHelper
             // 
             // Alex_bossname
             // 
-            this.Alex_bossname.Location = new System.Drawing.Point(92, 22);
+            this.Alex_bossname.Location = new System.Drawing.Point(101, 44);
             this.Alex_bossname.Name = "Alex_bossname";
             this.Alex_bossname.Size = new System.Drawing.Size(263, 25);
             this.Alex_bossname.TabIndex = 1;
@@ -90,16 +105,27 @@ namespace BLMHelper
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 25);
+            this.label1.Location = new System.Drawing.Point(16, 47);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Boss Name";
             // 
+            // AutoInvite
+            // 
+            this.AutoInvite.AutoSize = true;
+            this.AutoInvite.Location = new System.Drawing.Point(437, 26);
+            this.AutoInvite.Name = "AutoInvite";
+            this.AutoInvite.Size = new System.Drawing.Size(367, 19);
+            this.AutoInvite.TabIndex = 4;
+            this.AutoInvite.Text = "自动邀请 -> /tell 女拳斗士蒂法@静语庄园 123 ";
+            this.AutoInvite.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.AutoInvite);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MainForm";
@@ -107,6 +133,7 @@ namespace BLMHelper
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
         
@@ -128,6 +155,16 @@ namespace BLMHelper
         {
             return Alex_channel.Text;
 
+        }
+
+        public Boolean GetAlexOn()
+        {
+            return Alex_on.Checked;
+        }
+
+        public Boolean GetAutoInvite()
+        {
+            return AutoInvite.Checked;
         }
     }
 }

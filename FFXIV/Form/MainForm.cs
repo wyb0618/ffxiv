@@ -18,6 +18,8 @@ namespace BLMHelper
         private CheckBox Alex_on;
         private CheckBox AutoInvite;
 
+        private BLMHelper bLMHelper;
+
         #region Designer Created Code (Avoid editing)
         /// <summary> 
         /// Required designer variable.
@@ -78,6 +80,7 @@ namespace BLMHelper
             this.Alex_on.TabIndex = 2;
             this.Alex_on.Text = "启动";
             this.Alex_on.UseVisualStyleBackColor = true;
+            this.Alex_on.CheckedChanged += new System.EventHandler(this.Alex_on_CheckedChanged);
             // 
             // Alex_channel
             // 
@@ -136,12 +139,14 @@ namespace BLMHelper
             this.PerformLayout();
 
         }
-        
+
         #endregion
 
         #endregion
-        public MainForm()
+
+        public MainForm(BLMHelper bLMHelper)
         {
+            this.bLMHelper = bLMHelper;
             InitializeComponent();
         }
         
@@ -165,6 +170,19 @@ namespace BLMHelper
         public Boolean GetAutoInvite()
         {
             return AutoInvite.Checked;
+        }
+
+        private void Alex_on_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Alex_on.Checked)
+            {
+                bLMHelper.InitMainListener();
+            }
+            else
+            {
+                bLMHelper.DeinitMainListener();
+            }
+
         }
     }
 }

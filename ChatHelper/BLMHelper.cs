@@ -8,50 +8,37 @@ using Advanced_Combat_Tracker;
 //using PostNamazu;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using FFXIV.Utils;
+using PostNamazu;
 
-namespace BLMHelper
+namespace ChatHelper
 {
-    public class BLMHelper : IActPluginV1
+    public class ChatHelper : IActPluginV1
     {
         public FFXIV_ACT_Plugin.FFXIV_ACT_Plugin ffxiv_Plugin = null;
-        public PostNamazu.PostNamazu postNamazu = null;
-        
-        public static MainForm mainForm = null;
+        public PostNamazu.PostNamazu postNamazu;
 
-
-        private  MainListener mainListener = null;
-        private  ChatListener chatListener = null;
-
-
-        public BLMHelper()
+        public ChatHelper()
         {
         }
 
         public void DeInitPlugin()
         {
-            if (mainListener != null)
-                mainListener.Dispose();
-            if (chatListener != null)
-                chatListener.Dispose();
-            mainForm.Dispose();
-            postNamazu.PostNamazuDeinit();
-            MsgUtils.sw.Close();
+            if (postNamazu != null)
+                postNamazu.PostNamazuDeinit();
         }
         
         void IActPluginV1.InitPlugin(TabPage pluginScreenSpace, Label pluginStatusText)
         {
+            postNamazu = new PostNamazu.PostNamazu(true);
+
             pluginScreenSpace.Text = "小鬼的助手";
+            
+            pluginScreenSpace.Controls.Add(null);
 
-            mainForm = new MainForm(this);
-
-            pluginScreenSpace.Controls.Add(mainForm);
-
-            //ffxiv_Plugin = GetFfxivPlugin();
+            ffxiv_Plugin = GetFfxivPlugin();
 
             pluginStatusText.Text = "小鬼的act助手启动！！！";
-
-            postNamazu = new PostNamazu.PostNamazu();
+            
         }
 
         /// <summary>
@@ -68,17 +55,6 @@ namespace BLMHelper
             return ffxivActPlugin ?? throw new Exception("找不到FFXIV解析插件");
         }
 
-        public void InitMainListener()
-        {
-            if(mainListener==null)
-                mainListener = new MainListener(postNamazu);
-        }
-
-        public void DeinitMainListener()
-        {
-            mainListener.Dispose();
-            mainListener = null;
-        }
         /// <summary>
         ///     取得鲶鱼精邮差插件的进程
         /// </summary>

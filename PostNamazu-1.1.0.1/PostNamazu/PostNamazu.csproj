@@ -83,12 +83,7 @@
     <Compile Include="Common\SizeCache.cs" />
     <Compile Include="Models\Waymark.cs" />
     <Compile Include="Models\WayMarks.cs" />
-    <Compile Include="PostNamazu.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="PostNamazuUI.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="PostNamazu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

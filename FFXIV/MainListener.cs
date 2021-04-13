@@ -21,20 +21,26 @@ namespace BLMHelper
 
     class MainListener : IDisposable
     {
-        private FFXIV_ACT_Plugin.FFXIV_ACT_Plugin ffxiv_Plugin = null;
+        private PostNamazu.PostNamazu postNamazu = null;
         private string playername = "女拳斗士蒂法";
         private string zonename = "";
 
-        public MainListener(FFXIV_ACT_Plugin.FFXIV_ACT_Plugin ffxiv_Plugin)
+        public MainListener(PostNamazu.PostNamazu postNamazu)
         {
-            this.ffxiv_Plugin = ffxiv_Plugin;
 
-            ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(ZoneChange);
+            this.postNamazu = postNamazu;
+
+            //ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(ZoneChange);
             //ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(Alex2ndPractice);
             //ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(BLM);
             //ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(AlexRecorder);
             //ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(AlexAandB);
             //ffxiv_Plugin.DataSubscription.ParsedLogLine += new ParsedLogLineDelegate(ParsedLogLineHandler);
+
+            ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(AlexAandB);
+            ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(Exflare);
+
+            postNamazu.DoTextCommand("/e 绝亚P4 笨比提示器启动");
         }
 
         public void Dispose()
@@ -43,7 +49,9 @@ namespace BLMHelper
             ActGlobals.oFormActMain.OnLogLineRead -= AlexB;
             ActGlobals.oFormActMain.OnLogLineRead -= AlexAandB;
             ActGlobals.oFormActMain.OnLogLineRead -= Exflare;
-            ActGlobals.oFormActMain.OnLogLineRead -= ZoneChange;
+
+            postNamazu.DoTextCommand("/e 绝亚P4 笨比提示器注销");
+            //ActGlobals.oFormActMain.OnLogLineRead -= ZoneChange;
             //ActGlobals.oFormActMain.OnLogLineRead -= BLM;
             //ActGlobals.oFormActMain.OnLogLineRead -= AlexRecorder;
             //ActGlobals.oFormActMain.OnLogLineRead -= Alex2ndPractice;
@@ -82,7 +90,7 @@ namespace BLMHelper
                     }
                     string party_str = "/p 使用以太步飞到" + obj[6] + "身边，飞行距离" + String.Format("{0:N1}", dis) + "米（" + dis_str + "）。";
 
-                    HttpUtils.sendCommand(party_str);
+                    postNamazu.DoTextCommand(party_str);
                 }
             }
         }
@@ -132,13 +140,13 @@ namespace BLMHelper
                 string zn = MsgUtils.GetZoneFromMsg(message);
                 zonename = zn;
 
-                HttpUtils.sendCommand("/e Zone change to" + zonename);
+                postNamazu.DoTextCommand("/e Zone change to " + zonename);
 
                 if (zn.Equals("亚历山大绝境战")&& BLMHelper.mainForm.GetAlexOn())
                 {
                     ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(AlexAandB);
                     ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(Exflare);
-                    HttpUtils.sendCommand("/e P4 笨比提示器启动");
+                    postNamazu.DoTextCommand("/e P4 笨比提示器启动");
                 }
                 else
                 {
@@ -161,7 +169,7 @@ namespace BLMHelper
                 string[] obj = message.Substring(15).Split(':');
                 if (obj[1].Equals("487B"))
                 {
-                    HttpUtils.sendCommand("/p ----- @一测开始@ -----");
+                    postNamazu.DoTextCommand("/p ----- @一测开始@ -----");
                     ActGlobals.oFormActMain.OnLogLineRead -= AlexA;
                     ActGlobals.oFormActMain.OnLogLineRead -= AlexB;
                     Shadow.clear();
@@ -169,7 +177,7 @@ namespace BLMHelper
                 }
                 else if (obj[1].Equals("4B13"))
                 {
-                    HttpUtils.sendCommand("/p ----- @二测开始@ -----");
+                    postNamazu.DoTextCommand("/p ----- @二测开始@ -----");
                     ActGlobals.oFormActMain.OnLogLineRead -= AlexA;
                     ActGlobals.oFormActMain.OnLogLineRead -= AlexB;
                     Shadow.clear();
@@ -196,7 +204,7 @@ namespace BLMHelper
                         if (Shadow.outputAlexA())
                         {
                             ActGlobals.oFormActMain.OnLogLineRead -= AlexA;
-                            HttpUtils.sendCommand("/p ----- @一测结束@ -----");
+                            postNamazu.DoTextCommand("/p ----- @一测结束@ -----");
                         }
                     }
 
@@ -224,7 +232,7 @@ namespace BLMHelper
                         if (Shadow.outputAlexB())
                         {
                             ActGlobals.oFormActMain.OnLogLineRead -= AlexB;
-                            HttpUtils.sendCommand("/p ----- @二测结束@ -----");
+                            postNamazu.DoTextCommand("/p ----- @二测结束@ -----");
                         }
                     }
 

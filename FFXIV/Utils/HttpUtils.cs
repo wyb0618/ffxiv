@@ -17,6 +17,7 @@ namespace FFXIV.Utils
             }).Start();
         }
 
+        /* 暂时作废 */
         public static void sendRecordSync(string rdmsg)
         {
             new Thread(() => {
@@ -31,6 +32,11 @@ namespace FFXIV.Utils
 
         public static void sendCommand(string command)
         {
+            
+        }
+
+        public static void sendCommandByHttpClient(string command)
+        {
             WebClient client = new WebClient();
             try
             {
@@ -44,6 +50,9 @@ namespace FFXIV.Utils
                 client.Dispose();
             }
         }
+
+
+        /* 暂时作废 */
         public static void sendRecord(string rdmsg)
         {
             WebClient client = new WebClient();

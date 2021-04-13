@@ -16,12 +16,6 @@ namespace PostNamazu
     {
         public PostNamazu()
         {
-            //AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
-        }
-
-        public PostNamazu(bool autowise)
-        {
-
             _ffxivPlugin = GetFfxivPlugin();
 
             //AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
@@ -29,7 +23,6 @@ namespace PostNamazu
             _processSwitcher = new BackgroundWorker { WorkerSupportsCancellation = true };
             _processSwitcher.DoWork += ProcessSwitcher;
             _processSwitcher.RunWorkerAsync();
-            
         }
 
         public void PostNamazuDeinit()
@@ -104,7 +97,7 @@ namespace PostNamazu
             try
             {
                 Monitor.Enter(assemblyLock, ref flag);
-                var array = Encoding.UTF8.GetBytes(command);
+                var array = Encoding.Default.GetBytes(command);
                 using (AllocatedMemory allocatedMemory = Memory.CreateAllocatedMemory(400),allocatedMemory2 = Memory.CreateAllocatedMemory(array.Length + 30))
                 {
                     allocatedMemory2.AllocateOfChunk("cmd", array.Length);
@@ -237,9 +230,9 @@ namespace PostNamazu
 
                 Offsets = new Offsets(scanner);
 #if DEBUG
-                PluginUI.Log(Offsets.ProcessChatBoxPtr);
-                PluginUI.Log(Offsets.UiModule);
-                PluginUI.Log(Offsets.RaptureModule);
+                //PluginUI.Log(Offsets.ProcessChatBoxPtr);
+                //PluginUI.Log(Offsets.UiModule);
+                //PluginUI.Log(Offsets.RaptureModule);
 #endif
             }
             catch (ArgumentOutOfRangeException)

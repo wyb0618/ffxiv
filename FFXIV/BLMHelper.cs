@@ -15,10 +15,11 @@ namespace BLMHelper
     public class BLMHelper : IActPluginV1
     {
         public FFXIV_ACT_Plugin.FFXIV_ACT_Plugin ffxiv_Plugin = null;
+
         public PostNamazu.PostNamazu postNamazu = null;
         
         public static MainForm mainForm = null;
-
+        public static BLMHelper bLMHelper = null;
 
         private  MainListener mainListener = null;
         private  ChatListener chatListener = null;
@@ -41,6 +42,8 @@ namespace BLMHelper
         
         void IActPluginV1.InitPlugin(TabPage pluginScreenSpace, Label pluginStatusText)
         {
+            bLMHelper = this;
+
             pluginScreenSpace.Text = "小鬼的助手";
 
             mainForm = new MainForm(this);
@@ -51,7 +54,7 @@ namespace BLMHelper
 
             pluginStatusText.Text = "小鬼的act助手启动！！！";
 
-            postNamazu = new PostNamazu.PostNamazu();
+            postNamazu = new PostNamazu.PostNamazu(mainForm);
         }
 
         /// <summary>

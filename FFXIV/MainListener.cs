@@ -21,15 +21,13 @@ namespace BLMHelper
 
     class MainListener : IDisposable
     {
-        private PostNamazu.PostNamazu postNamazu = null;
         private string playername = "女拳斗士蒂法";
         private string zonename = "";
+        private Flare flare;
+        private Shadow shadow;
 
         public MainListener(PostNamazu.PostNamazu postNamazu)
         {
-
-            this.postNamazu = postNamazu;
-
             //ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(ZoneChange);
             //ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(Alex2ndPractice);
             //ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(BLM);
@@ -39,8 +37,10 @@ namespace BLMHelper
 
             ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(AlexAandB);
             ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(Exflare);
+            flare = new Flare();
+            shadow = new Shadow();
 
-            postNamazu.DoTextCommand("/e 绝亚P4 笨比提示器启动");
+            PostUtils.sendCommand("/e 绝亚P4 笨比提示器启动");
         }
 
         public void Dispose()
@@ -49,8 +49,10 @@ namespace BLMHelper
             ActGlobals.oFormActMain.OnLogLineRead -= AlexB;
             ActGlobals.oFormActMain.OnLogLineRead -= AlexAandB;
             ActGlobals.oFormActMain.OnLogLineRead -= Exflare;
+            flare = null;
+            shadow = null;
 
-            postNamazu.DoTextCommand("/e 绝亚P4 笨比提示器注销");
+            PostUtils.sendCommand("/e 绝亚P4 笨比提示器注销");
             //ActGlobals.oFormActMain.OnLogLineRead -= ZoneChange;
             //ActGlobals.oFormActMain.OnLogLineRead -= BLM;
             //ActGlobals.oFormActMain.OnLogLineRead -= AlexRecorder;
@@ -90,7 +92,7 @@ namespace BLMHelper
                     }
                     string party_str = "/p 使用以太步飞到" + obj[6] + "身边，飞行距离" + String.Format("{0:N1}", dis) + "米（" + dis_str + "）。";
 
-                    postNamazu.DoTextCommand(party_str);
+                    PostUtils.sendCommand(party_str);
                 }
             }
         }
@@ -140,13 +142,13 @@ namespace BLMHelper
                 string zn = MsgUtils.GetZoneFromMsg(message);
                 zonename = zn;
 
-                postNamazu.DoTextCommand("/e Zone change to " + zonename);
+                PostUtils.sendCommand("/e Zone change to " + zonename);
 
                 if (zn.Equals("亚历山大绝境战")&& BLMHelper.mainForm.GetAlexOn())
                 {
                     ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(AlexAandB);
                     ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(Exflare);
-                    postNamazu.DoTextCommand("/e P4 笨比提示器启动");
+                    PostUtils.sendCommand("/e P4 笨比提示器启动");
                 }
                 else
                 {
@@ -169,18 +171,18 @@ namespace BLMHelper
                 string[] obj = message.Substring(15).Split(':');
                 if (obj[1].Equals("487B"))
                 {
-                    postNamazu.DoTextCommand("/p ----- @一测开始@ -----");
+                    PostUtils.sendCommand("/p ----- @一测开始@ -----");
                     ActGlobals.oFormActMain.OnLogLineRead -= AlexA;
                     ActGlobals.oFormActMain.OnLogLineRead -= AlexB;
-                    Shadow.clear();
+                    shadow.clear();
                     ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(AlexA);
                 }
                 else if (obj[1].Equals("4B13"))
                 {
-                    postNamazu.DoTextCommand("/p ----- @二测开始@ -----");
+                    PostUtils.sendCommand("/p ----- @二测开始@ -----");
                     ActGlobals.oFormActMain.OnLogLineRead -= AlexA;
                     ActGlobals.oFormActMain.OnLogLineRead -= AlexB;
-                    Shadow.clear();
+                    shadow.clear();
                     ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(AlexB);
                 }
             }
@@ -199,12 +201,12 @@ namespace BLMHelper
                 if (obj[1].StartsWith("1") && obj[3].StartsWith("4") && obj[7].Equals("0062") && obj[8].StartsWith("4") && obj[9].Equals("000F"))
                 {
                     int shadowid = Convert.ToInt32(obj[3], 16);
-                    lock (typeof(Shadow)) {
-                        Shadow.add(obj[2], shadowid);
-                        if (Shadow.outputAlexA())
+                    lock (shadow) {
+                        shadow.add(obj[2], shadowid);
+                        if (shadow.outputAlexA())
                         {
                             ActGlobals.oFormActMain.OnLogLineRead -= AlexA;
-                            postNamazu.DoTextCommand("/p ----- @一测结束@ -----");
+                            PostUtils.sendCommand("/p ----- @一测结束@ -----");
                         }
                     }
 
@@ -228,11 +230,11 @@ namespace BLMHelper
                     int shadowid = Convert.ToInt32(obj[3], 16);
                     lock (typeof(Shadow))
                     {
-                        Shadow.add(obj[2], shadowid);
-                        if (Shadow.outputAlexB())
+                        shadow.add(obj[2], shadowid);
+                        if (shadow.outputAlexB())
                         {
                             ActGlobals.oFormActMain.OnLogLineRead -= AlexB;
-                            postNamazu.DoTextCommand("/p ----- @二测结束@ -----");
+                            PostUtils.sendCommand("/p ----- @二测结束@ -----");
                         }
                     }
 
@@ -258,16 +260,16 @@ namespace BLMHelper
                 if(obj[1].StartsWith("4")&& obj[3].StartsWith("488F") && obj[4].StartsWith("神圣大审判") && obj[33].StartsWith("44") && obj[34].StartsWith("44")
                     && obj[35].StartsWith("0") && obj[36].StartsWith("10000") && obj[37].StartsWith("0") && obj[38].StartsWith("1000"))
                 {
-                    lock (typeof(Flare))
+                    lock (flare)
                     {
                         //左中右 顺序是84、100、92
-                        if (Flare.AddTime(message.Substring(0, 9), Convert.ToInt32(obj[1], 16), obj[39]))
+                        if (flare.AddTime(message.Substring(0, 9), Convert.ToInt32(obj[1], 16), obj[39]))
                         {
-                            Flare.setSleep();
+                            flare.setSleep();
                             ActGlobals.oFormActMain.OnLogLineRead -= Exflare;
                             new Thread(() => {
                                 Thread.Sleep(15000);
-                                Flare.setAlive();
+                                flare.setAlive();
                                 ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(Exflare);
                             }).Start();
                         }

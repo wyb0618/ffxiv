@@ -19,6 +19,8 @@ namespace BLMHelper
         private CheckBox AutoInvite;
 
         private BLMHelper bLMHelper;
+        private TextBox logta;
+        private Label label3;
 
         #region Designer Created Code (Avoid editing)
         /// <summary> 
@@ -54,6 +56,8 @@ namespace BLMHelper
             this.Alex_bossname = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.AutoInvite = new System.Windows.Forms.CheckBox();
+            this.logta = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -124,10 +128,31 @@ namespace BLMHelper
             this.AutoInvite.Text = "自动邀请 -> /tell 女拳斗士蒂法@静语庄园 123 ";
             this.AutoInvite.UseVisualStyleBackColor = true;
             // 
+            // logta
+            // 
+            this.logta.Location = new System.Drawing.Point(19, 176);
+            this.logta.Multiline = true;
+            this.logta.Name = "logta";
+            this.logta.ReadOnly = true;
+            this.logta.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.logta.Size = new System.Drawing.Size(370, 234);
+            this.logta.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(25, 158);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(31, 15);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Log";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.logta);
             this.Controls.Add(this.AutoInvite);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
@@ -183,6 +208,12 @@ namespace BLMHelper
                 bLMHelper.DeinitMainListener();
             }
 
+        }
+
+        public void Log(String logtext)
+        {
+            logta.Text += logtext;
+            logta.Text += "\r\n";
         }
     }
 }

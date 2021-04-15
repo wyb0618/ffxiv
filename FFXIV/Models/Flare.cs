@@ -9,24 +9,35 @@ namespace FFXIV.Models
 {
     class Flare
     {
-        public static string str1 = "";
-        public static string str2 = "";
+        public string str1;
+        public string str2;
 
-        public static string rs1 = "";
-        public static string rs2 = "";
+        public string rs1;
+        public string rs2;
 
-        public static int max_id = 0;
+        public int max_id;
 
-        public static bool sleep = false;
+        public bool sleep;
 
-        public static bool AddTime(string time, int id, string x)
+        public Flare()
+        {
+            str1 = "";
+            str2 = "";
+            rs1 = "";
+            rs2 = "";
+            max_id = 0;
+            sleep = false;
+        }
+
+
+        public bool AddTime(string time, int id, string x)
         {
             if (!sleep)
             {
                 if (str1.Equals("") || str1.Equals(time))
                 {
                     if(str1.Equals(""))
-                        HttpUtils.sendCommand("/p -----地火预警<se.1>-----");
+                        BLMHelper.BLMHelper.bLMHelper.postNamazu.DoTextCommand("/p -----地火预警<se.1>-----");
                     str1 = time;
                     if (id > max_id)
                     {
@@ -45,28 +56,28 @@ namespace FFXIV.Models
                     switch (rs)
                     {
                         case "12":
-                            HttpUtils.sendCommand("/p        □  ↑↑");
-                            HttpUtils.sendCommand("/p □□■  ↑↑");
+                            BLMHelper.BLMHelper.bLMHelper.postNamazu.DoTextCommand("/p        □  ↑↑");
+                            BLMHelper.BLMHelper.bLMHelper.postNamazu.DoTextCommand("/p □□■  ↑↑");
                             break;
                         case "13":
-                            HttpUtils.sendCommand("/p        □  ←←");
-                            HttpUtils.sendCommand("/p □■□  ←←");
+                            BLMHelper.BLMHelper.bLMHelper.postNamazu.DoTextCommand("/p        □  ←←");
+                            BLMHelper.BLMHelper.bLMHelper.postNamazu.DoTextCommand("/p □■□  ←←");
                             break;
                         case "23":
-                            HttpUtils.sendCommand("/p        □  →→");
-                            HttpUtils.sendCommand("/p ■□□  →→");
+                            BLMHelper.BLMHelper.bLMHelper.postNamazu.DoTextCommand("/p        □  →→");
+                            BLMHelper.BLMHelper.bLMHelper.postNamazu.DoTextCommand("/p ■□□  →→");
                             break;
                         case "21":
-                            HttpUtils.sendCommand("/p        □  ←←");
-                            HttpUtils.sendCommand("/p □□■  ←←");
+                            BLMHelper.BLMHelper.bLMHelper.postNamazu.DoTextCommand("/p        □  ←←");
+                            BLMHelper.BLMHelper.bLMHelper.postNamazu.DoTextCommand("/p □□■  ←←");
                             break;
                         case "32":
-                            HttpUtils.sendCommand("/p        ■  ↓↓");
-                            HttpUtils.sendCommand("/p □□□  ↓↓");
+                            BLMHelper.BLMHelper.bLMHelper.postNamazu.DoTextCommand("/p        ■  ↓↓");
+                            BLMHelper.BLMHelper.bLMHelper.postNamazu.DoTextCommand("/p □□□  ↓↓");
                             break;
                         case "31": 
-                            HttpUtils.sendCommand("/p        □  →→");
-                            HttpUtils.sendCommand("/p □■□  →→");
+                            BLMHelper.BLMHelper.bLMHelper.postNamazu.DoTextCommand("/p        □  →→");
+                            BLMHelper.BLMHelper.bLMHelper.postNamazu.DoTextCommand("/p □■□  →→");
                             break;
                         default:
                             ;
@@ -80,7 +91,7 @@ namespace FFXIV.Models
             return false;
         }
 
-        public static string TransXtoNum(string x)
+        public  string TransXtoNum(string x)
         {
             if (x.Equals("84")) return "1";
             if (x.Equals("92")) return "3";
@@ -88,7 +99,7 @@ namespace FFXIV.Models
             return "Error";
         }
 
-        public static void clear()
+        public  void clear()
         {
             str1 = "";
             str2 = "";
@@ -97,12 +108,12 @@ namespace FFXIV.Models
             max_id = 0;
         }
 
-        public static void setSleep()
+        public void setSleep()
         {
             sleep = true;
         }
 
-        public static void setAlive()
+        public void setAlive()
         {
             sleep = false;
         }

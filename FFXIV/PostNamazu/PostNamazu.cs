@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using Advanced_Combat_Tracker;
+using BLMHelper;
 using GreyMagic;
 using Newtonsoft.Json;
 using PostNamazu.Models;
@@ -14,8 +15,10 @@ namespace PostNamazu
 {
     public class PostNamazu
     {
-        public PostNamazu()
+        private MainForm mainForm = null;
+        public PostNamazu(MainForm mainForm)
         {
+            this.mainForm = mainForm;
             _ffxivPlugin = GetFfxivPlugin();
 
             //AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
@@ -51,6 +54,7 @@ namespace PostNamazu
                 Memory = new ExternalProcessMemory(FFXIV, false, false);
                 Memory.WriteBytes(_entrancePtr, new byte[] {76, 139, 220, 83, 86});
                 Memory = new ExternalProcessMemory(FFXIV, true, false, _entrancePtr, false, 5, true);
+                mainForm.Log($"已注入FFXIV进程 {FFXIV.Id}");
             }
             catch (Exception ex)
             {
@@ -83,11 +87,11 @@ namespace PostNamazu
         {
             if (FFXIV == null)
             {
-                //PluginUI.Log("执行错误：接收到指令，但是没有对应的游戏进程");
+                mainForm.Log("执行错误：接收到指令，但是没有对应的游戏进程");
                 throw new Exception("没有对应的游戏进程");
             }
 
-            //PluginUI.Log(command);
+            mainForm.Log(command);
             if (command == "")
                 throw new Exception("指令为空");
 
@@ -135,8 +139,8 @@ namespace PostNamazu
         private void DoWaymarks(string waymarksStr)
         {
             var waymarks = JsonConvert.DeserializeObject<WayMarks>(waymarksStr);
-            //PluginUI.Log(waymarksStr);
-           // PluginUI.Log("开始标记");
+            mainForm.Log(waymarksStr);
+            mainForm.Log("开始标记");
             DoWaymarks(waymarks);
         }
 
@@ -214,7 +218,7 @@ namespace PostNamazu
         /// <returns>返回是否成功找到入口地址</returns>
         private bool GetOffsets()
         {
-           // PluginUI.Log("Getting Offsets......");
+            mainForm.Log("Getting Offsets......");
             try
             {
                 var scanner = new SigScanner(FFXIV);
@@ -224,20 +228,20 @@ namespace PostNamazu
                 }
                 catch (ArgumentOutOfRangeException)
                 {
-                    //PluginUI.Log("无法对当前进程注入\n可能是已经被其他进程注入了？");
+                    mainForm.Log("无法对当前进程注入\n可能是已经被其他进程注入了？");
                     return false;
                 }
 
                 Offsets = new Offsets(scanner);
 #if DEBUG
-                //PluginUI.Log(Offsets.ProcessChatBoxPtr);
-                //PluginUI.Log(Offsets.UiModule);
-                //PluginUI.Log(Offsets.RaptureModule);
+                //mainForm.Log(Offsets.ProcessChatBoxPtr);
+                //mainForm.Log(Offsets.UiModule);
+                //mainForm.Log(Offsets.RaptureModule);
 #endif
             }
             catch (ArgumentOutOfRangeException)
             {
-               //PluginUI.Log("查找失败：找不到特征值");
+               mainForm.Log("查找失败：找不到特征值");
                 return false;
             }
 
@@ -295,7 +299,7 @@ namespace PostNamazu
                 if (FFXIV != null)
                     if (GetOffsets())
                         Attach();
-               //PluginUI.Log($"已切换至进程{tProcess.Id}");
+               mainForm.Log($"已切换至进程{tProcess.Id}");
             }
         }
 

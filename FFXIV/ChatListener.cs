@@ -57,6 +57,13 @@ namespace BLMHelper
             }
         }
 
+        //tts小队播报
+        public void AutoPartyTTS(bool isImport, LogLineEventArgs logInfo)
+        {
+
+        }
+
+
         public void CMD(bool isImport, LogLineEventArgs logInfo)
         {
             string message = logInfo.originalLogLine;

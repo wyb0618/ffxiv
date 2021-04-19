@@ -21,6 +21,9 @@ namespace BLMHelper
         private BLMHelper bLMHelper;
         private TextBox logta;
         private Label label3;
+        private GroupBox groupBox2;
+        private CheckBox checkBox1;
+        private CheckBox Chat_on;
 
         #region Designer Created Code (Avoid editing)
         /// <summary> 
@@ -58,7 +61,11 @@ namespace BLMHelper
             this.AutoInvite = new System.Windows.Forms.CheckBox();
             this.logta = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.Chat_on = new System.Windows.Forms.CheckBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -78,7 +85,7 @@ namespace BLMHelper
             // Alex_on
             // 
             this.Alex_on.AutoSize = true;
-            this.Alex_on.Location = new System.Drawing.Point(19, 19);
+            this.Alex_on.Location = new System.Drawing.Point(19, 24);
             this.Alex_on.Name = "Alex_on";
             this.Alex_on.Size = new System.Drawing.Size(59, 19);
             this.Alex_on.TabIndex = 2;
@@ -121,7 +128,7 @@ namespace BLMHelper
             // AutoInvite
             // 
             this.AutoInvite.AutoSize = true;
-            this.AutoInvite.Location = new System.Drawing.Point(437, 26);
+            this.AutoInvite.Location = new System.Drawing.Point(17, 50);
             this.AutoInvite.Name = "AutoInvite";
             this.AutoInvite.Size = new System.Drawing.Size(367, 19);
             this.AutoInvite.TabIndex = 4;
@@ -147,19 +154,53 @@ namespace BLMHelper
             this.label3.TabIndex = 6;
             this.label3.Text = "Log";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.checkBox1);
+            this.groupBox2.Controls.Add(this.Chat_on);
+            this.groupBox2.Controls.Add(this.AutoInvite);
+            this.groupBox2.Location = new System.Drawing.Point(427, 26);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(453, 110);
+            this.groupBox2.TabIndex = 7;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "FF14聊天增强";
+            // 
+            // Chat_on
+            // 
+            this.Chat_on.AutoSize = true;
+            this.Chat_on.Location = new System.Drawing.Point(17, 24);
+            this.Chat_on.Name = "Chat_on";
+            this.Chat_on.Size = new System.Drawing.Size(59, 19);
+            this.Chat_on.TabIndex = 4;
+            this.Chat_on.Text = "启动";
+            this.Chat_on.UseVisualStyleBackColor = true;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Location = new System.Drawing.Point(17, 78);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(143, 19);
+            this.checkBox1.TabIndex = 5;
+            this.checkBox1.Text = "自动TTS小队语音";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.logta);
-            this.Controls.Add(this.AutoInvite);
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MainForm";
             this.Size = new System.Drawing.Size(915, 443);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

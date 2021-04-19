@@ -73,6 +73,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLMHelper.cs" />
+    <Compile Include="Models\CMD.cs" />
+    <Compile Include="MyListener.cs" />
     <Compile Include="Common%28abandon%29\BLMForm.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -23,6 +23,7 @@ namespace BLMHelper
 
         private  MainListener mainListener = null;
         private  ChatListener chatListener = null;
+        private  LogLineOut logLineOut = null;
 
 
         public BLMHelper()
@@ -34,6 +35,8 @@ namespace BLMHelper
             if (mainListener != null)
                 mainListener.Dispose();
             if (chatListener != null)
+                chatListener.Dispose();
+            if (logLineOut != null)
                 chatListener.Dispose();
             mainForm.Dispose();
             postNamazu.PostNamazuDeinit();
@@ -71,17 +74,36 @@ namespace BLMHelper
             return ffxivActPlugin ?? throw new Exception("找不到FFXIV解析插件");
         }
 
-        public void InitMainListener()
+        internal void InitMainListener()
         {
             if(mainListener==null)
                 mainListener = new MainListener(postNamazu);
         }
 
-        public void DeinitMainListener()
+        internal void DeinitMainListener()
         {
-            mainListener.Dispose();
-            mainListener = null;
+            if (mainListener != null)
+            {
+                mainListener.Dispose();
+                mainListener = null;
+            }
         }
+
+        internal void InitLogLineOut()
+        {
+            if (logLineOut == null)
+                logLineOut = new LogLineOut();
+        }
+
+        internal void DeinitLogLineOut()
+        {
+            if (logLineOut != null)
+            {
+                logLineOut.Dispose();
+                logLineOut = null;
+            }
+        }
+
         /// <summary>
         ///     取得鲶鱼精邮差插件的进程
         /// </summary>

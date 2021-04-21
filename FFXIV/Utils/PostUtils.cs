@@ -20,7 +20,7 @@ namespace FFXIV.Utils
         {
             if (BLMHelper.BLMHelper.bLMHelper != null)
             {
-                BLMHelper.BLMHelper.bLMHelper.postNamazu.WriteWaymark();
+                BLMHelper.BLMHelper.bLMHelper.postNamazu.WriteWaymark(null,-1);
             }
         }
     }

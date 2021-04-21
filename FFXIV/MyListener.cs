@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -22,46 +23,56 @@ namespace BLMHelper
     class MyListener : IDisposable
     {
         private string channel = "/s";
+        private Person me;
 
         public MyListener()
         {
-            ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(CMD);
+            string temp = "";
+            ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(WhereAmI);
+            me = new Person();
         }
 
         public void Dispose()
         {
-            ActGlobals.oFormActMain.OnLogLineRead -= CMD;
+            ActGlobals.oFormActMain.OnLogLineRead -= WhereAmI;
         }
 
-        public void CMD(bool isImport, LogLineEventArgs logInfo)
+        private void WhereAmI(bool isImport, LogLineEventArgs logInfo)
+        {
+
+        }
+
+        //ZoneChange
+        public void ZoneChange(bool isImport, LogLineEventArgs logInfo)
         {
             string message = logInfo.originalLogLine;
             string type = message.Substring(15, 2);
 
-            if (type != null && type.Equals("00"))
+            if (type != null && type.Equals("01"))
             {
-                string rs = message.Substring(15);
-                string[] obj = rs.Split(':');
-
-                if (obj[1].Equals("0010"))
+                string zn = MsgUtils.GetZoneFromMsg(message);
+                lock (me)
                 {
-
-                    //设置afk自动回复
-                    if (obj[2].Equals("chats"))
-                    {
-
-                    }
-
-                    //切换频道
-                    if (obj[2].StartsWith("cto "))
-                    {
-                        PostUtils.sendCommand("/e ---- Chat Status ----");
-                        PostUtils.sendCommand("/e 当前频道->'" + channel + "'");
-                        return;
-                    }
-
+                    me.zone = zn;
                 }
+                PostUtils.sendCommand("/e Zone change to " + me.zone);
+            }
+        }
 
+        //PlayerChange
+        public void PlayerChange(bool isImport, LogLineEventArgs logInfo)
+        {
+            string message = logInfo.originalLogLine;
+            string type = message.Substring(15, 2);
+
+            if (type != null && type.Equals("02"))
+            {
+                string name = MsgUtils.GetPlayerNameFromMsg(message);
+                lock (me)
+                {
+                    me.name = name;
+                }
+                PostUtils.sendCommand("/e PlayerName change to " + me.name);
             }
         }
     }

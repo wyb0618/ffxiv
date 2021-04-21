@@ -24,6 +24,7 @@ namespace BLMHelper
         private GroupBox groupBox2;
         private CheckBox checkBox1;
         private CheckBox Chat_on;
+        private CheckBox LogLine;
 
         #region Designer Created Code (Avoid editing)
         /// <summary> 
@@ -62,8 +63,9 @@ namespace BLMHelper
             this.logta = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.Chat_on = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.Chat_on = new System.Windows.Forms.CheckBox();
+            this.LogLine = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -166,16 +168,6 @@ namespace BLMHelper
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "FF14聊天增强";
             // 
-            // Chat_on
-            // 
-            this.Chat_on.AutoSize = true;
-            this.Chat_on.Location = new System.Drawing.Point(17, 24);
-            this.Chat_on.Name = "Chat_on";
-            this.Chat_on.Size = new System.Drawing.Size(59, 19);
-            this.Chat_on.TabIndex = 4;
-            this.Chat_on.Text = "启动";
-            this.Chat_on.UseVisualStyleBackColor = true;
-            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
@@ -186,10 +178,32 @@ namespace BLMHelper
             this.checkBox1.Text = "自动TTS小队语音";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
+            // Chat_on
+            // 
+            this.Chat_on.AutoSize = true;
+            this.Chat_on.Location = new System.Drawing.Point(17, 24);
+            this.Chat_on.Name = "Chat_on";
+            this.Chat_on.Size = new System.Drawing.Size(59, 19);
+            this.Chat_on.TabIndex = 4;
+            this.Chat_on.Text = "启动";
+            this.Chat_on.UseVisualStyleBackColor = true;
+            // 
+            // LogLine
+            // 
+            this.LogLine.AutoSize = true;
+            this.LogLine.Location = new System.Drawing.Point(304, 151);
+            this.LogLine.Name = "LogLine";
+            this.LogLine.Size = new System.Drawing.Size(85, 19);
+            this.LogLine.TabIndex = 6;
+            this.LogLine.Text = "LogLine";
+            this.LogLine.UseVisualStyleBackColor = true;
+            this.LogLine.CheckedChanged += new System.EventHandler(this.LogLine_CheckedChanged);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.LogLine);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.logta);
@@ -240,7 +254,7 @@ namespace BLMHelper
 
         private void Alex_on_CheckedChanged(object sender, EventArgs e)
         {
-            if (Alex_on.Checked)
+            if (!Alex_on.Checked)
             {
                 bLMHelper.InitMainListener();
             }
@@ -255,6 +269,18 @@ namespace BLMHelper
         {
             logta.Text += logtext;
             logta.Text += "\r\n";
+        }
+
+        private void LogLine_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!Alex_on.Checked)
+            {
+                bLMHelper.InitLogLineOut();
+            }
+            else
+            {
+                bLMHelper.DeinitLogLineOut();
+            }
         }
     }
 }

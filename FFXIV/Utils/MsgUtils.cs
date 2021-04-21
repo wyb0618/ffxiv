@@ -38,6 +38,16 @@ namespace FFXIV.Utils
             return rs;
         }
 
+
+        public static string GetPlayerNameFromMsg(string message)
+        {
+            string temp = "02:Changed primary player to ";
+            int index = message.LastIndexOf(temp);
+            string rs = message.Substring(index + temp.Length);
+            rs = rs.Remove(rs.Length - 1, 1);
+            return rs;
+        }
+
         //获取日志行时间：系统年月日+日志行时间
         public static DateTime GetTimeFromMsg(string message)
         {

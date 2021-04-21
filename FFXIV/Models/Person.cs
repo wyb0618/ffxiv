@@ -8,11 +8,17 @@ namespace FFXIV.Models
 {
     class Person
     {
-        public double x;
-        public double y;
-        public string name;
-        public Boolean ablity;
-        public double face;
+        public double x { get; set; }
+        public double y { get; set; }
+        public string name { get; set; }
+        public Boolean ablity { get; set; }
+        public double face { get; set; }
+        public string zone { get; set; }
+
+        public Person()
+        {
+
+        }
 
         public Person(string name)
         {

@@ -74,6 +74,7 @@
   <ItemGroup>
     <Compile Include="BLMHelper.cs" />
     <Compile Include="Models\CMD.cs" />
+    <Compile Include="LogLineOut.cs" />
     <Compile Include="MyListener.cs" />
     <Compile Include="Common%28abandon%29\BLMForm.cs">
       <SubType>UserControl</SubType>
@@ -91,7 +92,7 @@
     <None Include="Models\Alex2nd.csout" />
     <None Include="Models\DataRder.csout" />
     <Compile Include="Models\Flare.cs" />
-    <None Include="Models\Person.csout" />
+    <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Shadow.cs" />
     <Compile Include="PostNamazu\Common\HTTPServer.cs" />
     <Compile Include="PostNamazu\Common\MemHelper.cs" />

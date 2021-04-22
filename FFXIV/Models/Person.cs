@@ -17,6 +17,11 @@ namespace FFXIV.Models
 
         public Person()
         {
+            x = 0;
+            y = 0;
+            name = "";
+            face = 0;
+            zone = "";
 
         }
 

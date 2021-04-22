@@ -4,10 +4,10 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Timers;
 using Advanced_Combat_Tracker;
 using FFXIV.Models;
+using FFXIV.Models.Msg;
 using FFXIV.Utils;
 using FFXIV_ACT_Plugin;
 using FFXIV_ACT_Plugin.Common;
@@ -24,26 +24,32 @@ namespace BLMHelper
     {
         private string channel = "/s";
         private Person me;
+        private Timer timer;
 
         public MyListener()
         {
             string temp = "";
-            ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(WhereAmI);
+            ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(ZoneChange);
+            ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(PlayerChange);
             me = new Person();
+            timer = new Timer();
         }
 
         public void Dispose()
         {
-            ActGlobals.oFormActMain.OnLogLineRead -= WhereAmI;
+            ActGlobals.oFormActMain.OnLogLineRead -= ZoneChange;
+            ActGlobals.oFormActMain.OnLogLineRead -= PlayerChange;
         }
 
-        private void WhereAmI(bool isImport, LogLineEventArgs logInfo)
+        private void WhereAmI()
         {
-
+            string msg = "";
+            msg = "小鬼（" + me.name + "）目前正在 " + me.zone;
+            HttpUtils.sendWhereAmI(msg);
         }
 
         //ZoneChange
-        public void ZoneChange(bool isImport, LogLineEventArgs logInfo)
+        private void ZoneChange(bool isImport, LogLineEventArgs logInfo)
         {
             string message = logInfo.originalLogLine;
             string type = message.Substring(15, 2);
@@ -55,12 +61,12 @@ namespace BLMHelper
                 {
                     me.zone = zn;
                 }
-                PostUtils.sendCommand("/e Zone change to " + me.zone);
+                PostUtils.sendCommand("/e Zone Change To " + me.zone);
             }
         }
 
         //PlayerChange
-        public void PlayerChange(bool isImport, LogLineEventArgs logInfo)
+        private void PlayerChange(bool isImport, LogLineEventArgs logInfo)
         {
             string message = logInfo.originalLogLine;
             string type = message.Substring(15, 2);
@@ -72,8 +78,10 @@ namespace BLMHelper
                 {
                     me.name = name;
                 }
-                PostUtils.sendCommand("/e PlayerName change to " + me.name);
+                PostUtils.sendCommand("/e PlayerName Change To " + me.name);
             }
+        }
+        
         }
     }
 }

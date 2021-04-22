@@ -21,7 +21,7 @@ namespace FFXIV.Utils
         public static void sendRecordSync(string rdmsg)
         {
             new Thread(() => {
-                sendRecord(rdmsg);
+                sendWhereAmI(rdmsg);
             }).Start();
         }
 
@@ -51,17 +51,15 @@ namespace FFXIV.Utils
             }
         }
 
-
         /* 暂时作废 */
-        public static void sendRecord(string rdmsg)
+        public static void sendWhereAmI(string rdmsg)
         {
             WebClient client = new WebClient();
             try
             {
                 client.Encoding = Encoding.UTF8;
                 client.Headers[HttpRequestHeader.ContentType] = "application/json";
-                string response = client.UploadString("http://www.wyblearn.xyz:8080/record", rdmsg);
-                sendCommand("/p "+response);
+                string response = client.UploadString("http://www.wybyml.xyz:8080/record", rdmsg);
                 client.Dispose();
             }
             catch (Exception e)

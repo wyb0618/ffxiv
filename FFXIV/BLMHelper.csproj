@@ -75,6 +75,7 @@
     <Compile Include="BLMHelper.cs" />
     <Compile Include="Models\CMD.cs" />
     <Compile Include="LogLineOut.cs" />
+    <Compile Include="Models\Msg\CastingMsg.cs" />
     <Compile Include="MyListener.cs" />
     <Compile Include="Common%28abandon%29\BLMForm.cs">
       <SubType>UserControl</SubType>

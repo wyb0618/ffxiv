@@ -26,7 +26,7 @@ namespace BLMHelper
         private Flare flare;
         private Shadow shadow;
 
-        public MainListener(PostNamazu.PostNamazu postNamazu)
+        public MainListener()
         {
             //ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(ZoneChange);
             //ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(Alex2ndPractice);

@@ -175,7 +175,7 @@ namespace BLMHelper
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(143, 19);
             this.checkBox1.TabIndex = 5;
-            this.checkBox1.Text = "自动TTS小队语音";
+            this.checkBox1.Text = "自动TTS小队聊天";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // Chat_on
@@ -210,7 +210,7 @@ namespace BLMHelper
             this.Controls.Add(this.groupBox1);
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "MainForm";
-            this.Size = new System.Drawing.Size(915, 443);
+            this.Size = new System.Drawing.Size(915, 435);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

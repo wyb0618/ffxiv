@@ -58,6 +58,8 @@ namespace BLMHelper
             pluginStatusText.Text = "小鬼的act助手启动！！！";
 
             postNamazu = new PostNamazu.PostNamazu(mainForm);
+
+
         }
 
         /// <summary>
@@ -77,7 +79,7 @@ namespace BLMHelper
         internal void InitMainListener()
         {
             if(mainListener==null)
-                mainListener = new MainListener(postNamazu);
+                mainListener = new MainListener();
         }
 
         internal void DeinitMainListener()

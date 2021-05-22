@@ -85,7 +85,7 @@ namespace BLMHelper
         internal void DeinitMainListener()
         {
             if (mainListener != null)
-            {
+            {  
                 mainListener.Dispose();
                 mainListener = null;
             }

@@ -33,6 +33,7 @@ namespace BLMHelper
             ActGlobals.oFormActMain.OnLogLineRead += new LogLineEventDelegate(PlayerChange);
             me = new Person();
             timer = new Timer();
+
         }
 
         public void Dispose()
@@ -84,4 +85,3 @@ namespace BLMHelper
         
         }
     }
-}

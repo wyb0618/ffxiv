@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<grammar version="1.0" xml:lang="zh-CN" mode="voice" root="act" xmlns="http://www.w3.org/2001/06/grammar" tag-format="semantics/1.0">  
+    
+	<rule id="act" scope="public">  
+	
+		<example>蒂法蒂法，打开人物界面</example>
+		
+		<!-- 设置唤醒词 -->
+		<item>蒂法蒂法</item>
+        
+		<one-of> 
+            
+            <!-- 打开菜单指令 -->			
+            <item id = "菜单指令">  
+                <ruleref uri="#打开菜单"/>  
+                <tag> out.打开菜单 = rules.打开菜单; </tag>  
+            </item> 
+
+            			
+        </one-of>
+		
+    </rule> 
+
+    <!-- 界面指令 -->
+    <rule id = "打开菜单">
+        <item repeat="0-1">打开</item>
+	    <item>
+	       <one-of> 
+		       <item>人物<tag>out="/character"</tag></item>
+		       <item>装备<tag>out="/armourychest"</tag></item>
+		       <item>招募<tag>out="/partyfinder"</tag></item>
+		       <item>跨服贝<tag>out="/cwlinkshellcmd"</tag></item>
+		       <item>表情<tag>out="/emotelist"</tag></item>
+		   </one-of> 
+	    </item>
+		<item>界面</item>
+	</rule>	
+
+</grammar>  

@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{AC3D6018-413A-481E-9461-226CCE7B3CC7}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ACTWarlock</RootNamespace>
     <AssemblyName>ACTWarlock</AssemblyName>
@@ -30,12 +30,29 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Advanced Combat Tracker">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\FFCafe\ACT国服整合\Advanced Combat Tracker.dll</HintPath>
     </Reference>
+    <Reference Include="FFXIV_ACT_Plugin">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\FFCafe\ACT国服整合\Plugins\FFXIV_ACT_Plugin\FFXIV_ACT_Plugin.dll</HintPath>
+    </Reference>
+    <Reference Include="FFXIV_ACT_Plugin.Common">
+      <HintPath>..\FFXIV_ACT_Plugin_SDK_2.0.7.0\SDK\FFXIV_ACT_Plugin.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="GreyMagic">
+      <HintPath>..\PostNamazu-1.1.0.1\PostNamazu\bin\Debug\GreyMagic.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Speech" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -45,8 +62,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="KDLL.cs" />
+    <Compile Include="ActWarlock.cs" />
+    <Compile Include="Form\LogWriter.cs" />
+    <Compile Include="PostNamazu\Common\HTTPServer.cs" />
+    <Compile Include="PostNamazu\Common\MemHelper.cs" />
+    <Compile Include="PostNamazu\Common\SigScanner.cs" />
+    <Compile Include="PostNamazu\Common\SizeCache.cs" />
+    <Compile Include="PostNamazu\Models\Offsets.cs" />
+    <Compile Include="PostNamazu\Models\Waymark.cs" />
+    <Compile Include="PostNamazu\Models\WayMarks.cs" />
+    <Compile Include="PostNamazu\PostNamazu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SpeechRecognizer\ACTSpeechRecognizer.cs" />
+    <Compile Include="Form\AWForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form\AWForm.Designer.cs">
+      <DependentUpon>AWForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\MathUtils.cs" />
+    <Compile Include="Utils\MsgUtils.cs" />
+    <Compile Include="Utils\PostUtils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="act.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form\AWForm.resx">
+      <DependentUpon>AWForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

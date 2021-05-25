@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ACTWarlock.Form;
+using ACTWarlock.SpeechRecognizer;
 using ACTWarlock.Utils;
 using Advanced_Combat_Tracker;
 
@@ -13,7 +14,8 @@ namespace ACTWarlock
 {
     class ActWarlock : IActPluginV1
     {
-        private PostNamazu.PostNamazu postNamazu = null;
+        private PostNamazu.PostNamazu postNamazu;
+        private ACTSpeechRecognizer actSpeechRecognizer;
         private LogWriter postNamazuLog;
         private AWForm awForm;
 
@@ -35,6 +37,8 @@ namespace ACTWarlock
             postNamazuLog = awForm.GetLogWriter();
 
             postNamazu = new PostNamazu.PostNamazu(postNamazuLog);
+
+            actSpeechRecognizer = ACTSpeechRecognizer.GetInstance;
 
             PostUtils.Register(postNamazu);
         }
